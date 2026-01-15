@@ -1,0 +1,137 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:146.0) Gecko/20100101 Firefox/146.0" version="29.3.1">
+  <diagram name="Stránka-1" id="0K0DTCTzcJ17qpOE873W">
+    <mxGraphModel dx="463" dy="571" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Q-9zdDLFiFwHk-50gJDE-3" edge="1" parent="1" source="Q-9zdDLFiFwHk-50gJDE-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="Q-9zdDLFiFwHk-50gJDE-2" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Q-9zdDLFiFwHk-50gJDE-21" edge="1" parent="1" source="Q-9zdDLFiFwHk-50gJDE-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="Q-9zdDLFiFwHk-50gJDE-20" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Q-9zdDLFiFwHk-50gJDE-1" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="Uživatel&lt;div&gt;1) jmeno&lt;/div&gt;&lt;div&gt;2) prijmeni&lt;/div&gt;&lt;div&gt;3) heslo&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="140" x="490" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Q-9zdDLFiFwHk-50gJDE-16" edge="1" parent="1" source="Q-9zdDLFiFwHk-50gJDE-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="Q-9zdDLFiFwHk-50gJDE-15" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PEB1G8KyJJabdPe9rFn3-1" edge="1" parent="1" source="Q-9zdDLFiFwHk-50gJDE-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="Q-9zdDLFiFwHk-50gJDE-15" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PEB1G8KyJJabdPe9rFn3-9" edge="1" parent="1" source="Q-9zdDLFiFwHk-50gJDE-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="Q-9zdDLFiFwHk-50gJDE-13">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="290" y="750" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PEB1G8KyJJabdPe9rFn3-11" edge="1" parent="1" source="Q-9zdDLFiFwHk-50gJDE-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="PEB1G8KyJJabdPe9rFn3-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="nQ2wbbq2egnwGxLfZ0uC-1" edge="1" parent="1" source="Q-9zdDLFiFwHk-50gJDE-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="PEB1G8KyJJabdPe9rFn3-3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="290" y="450" />
+              <mxPoint x="620" y="450" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="nQ2wbbq2egnwGxLfZ0uC-5" edge="1" parent="1" source="Q-9zdDLFiFwHk-50gJDE-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="PEB1G8KyJJabdPe9rFn3-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Q-9zdDLFiFwHk-50gJDE-2" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="Účastníci&lt;div&gt;1) idChaty&lt;/div&gt;&lt;div&gt;2) idUzivatel&lt;/div&gt;&lt;div&gt;3) zaplatil?&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="140" x="220" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Q-9zdDLFiFwHk-50gJDE-8" edge="1" parent="1" source="Q-9zdDLFiFwHk-50gJDE-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="Q-9zdDLFiFwHk-50gJDE-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Q-9zdDLFiFwHk-50gJDE-10" edge="1" parent="1" source="Q-9zdDLFiFwHk-50gJDE-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="Q-9zdDLFiFwHk-50gJDE-9" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="nQ2wbbq2egnwGxLfZ0uC-6" edge="1" parent="1" source="Q-9zdDLFiFwHk-50gJDE-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="160" y="190" />
+              <mxPoint x="700" y="190" />
+            </Array>
+            <mxPoint x="170" y="190" as="sourcePoint" />
+            <mxPoint x="700" y="870" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Q-9zdDLFiFwHk-50gJDE-7" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="Chata&lt;div&gt;1) idChaty&lt;/div&gt;&lt;div&gt;2) Jmeno&lt;/div&gt;&lt;div&gt;3) Cena&lt;/div&gt;&lt;div&gt;4) Zacatek&lt;/div&gt;&lt;div&gt;5) Konec&lt;/div&gt;&lt;div&gt;6) Kapacita&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="140" x="20" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="Q-9zdDLFiFwHk-50gJDE-12" edge="1" parent="1" source="Q-9zdDLFiFwHk-50gJDE-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="Q-9zdDLFiFwHk-50gJDE-11" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Q-9zdDLFiFwHk-50gJDE-14" edge="1" parent="1" source="Q-9zdDLFiFwHk-50gJDE-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="Q-9zdDLFiFwHk-50gJDE-13" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rIYButEKAMIZcvkYLSvA-1" edge="1" parent="1" source="Q-9zdDLFiFwHk-50gJDE-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="PEB1G8KyJJabdPe9rFn3-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Q-9zdDLFiFwHk-50gJDE-9" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="Den&lt;div&gt;1) idChaty&lt;/div&gt;&lt;div&gt;2) Datum&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="140" x="20" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="Q-9zdDLFiFwHk-50gJDE-11" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="Akce&lt;div&gt;1) id&lt;/div&gt;&lt;div&gt;2) nazev&lt;/div&gt;&lt;div&gt;3) casOD&lt;/div&gt;&lt;div&gt;4) casDO&lt;/div&gt;&lt;div&gt;5 cenaNavic&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="140" x="140" y="510" as="geometry" />
+        </mxCell>
+        <mxCell id="Q-9zdDLFiFwHk-50gJDE-13" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="Úkoly&lt;div&gt;1) id&lt;/div&gt;&lt;div&gt;2) nazev&lt;/div&gt;&lt;div&gt;3) idUcastnika&lt;/div&gt;&lt;div&gt;4) idDne&lt;/div&gt;&lt;div&gt;5) splneno?&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="140" x="20" y="680" as="geometry" />
+        </mxCell>
+        <mxCell id="Q-9zdDLFiFwHk-50gJDE-15" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="RoleUcastnik&lt;div&gt;1) idUcastnik&lt;/div&gt;&lt;div&gt;2) idRole&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="140" x="340" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="Q-9zdDLFiFwHk-50gJDE-18" edge="1" parent="1" source="Q-9zdDLFiFwHk-50gJDE-17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="Q-9zdDLFiFwHk-50gJDE-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Q-9zdDLFiFwHk-50gJDE-17" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="Role&lt;div&gt;1) idRole&lt;/div&gt;&lt;div&gt;2) nazev&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="140" x="530" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="Q-9zdDLFiFwHk-50gJDE-20" parent="1" style="whiteSpace=wrap;html=1;" value="PrihlasenyUZ&lt;div&gt;1) dateTime prihlaseni&lt;/div&gt;&lt;div&gt;2) token&lt;/div&gt;&lt;div&gt;3) idUzivatele&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="140" x="520" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="PEB1G8KyJJabdPe9rFn3-4" edge="1" parent="1" source="PEB1G8KyJJabdPe9rFn3-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="PEB1G8KyJJabdPe9rFn3-3" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PEB1G8KyJJabdPe9rFn3-2" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="&lt;div&gt;Mistnost&lt;/div&gt;&lt;div&gt;1) id&lt;/div&gt;&lt;div&gt;2) IdChaty&lt;/div&gt;&lt;div&gt;3) nazevMistnosti&lt;/div&gt;&lt;div&gt;4) zatahujeNaNoc?&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="140" x="340" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="PEB1G8KyJJabdPe9rFn3-3" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="&lt;div&gt;Místo&lt;/div&gt;&lt;div&gt;1) id&lt;/div&gt;&lt;div&gt;2) idMistnosti&lt;/div&gt;&lt;div&gt;3) idUcastnici&lt;/div&gt;&lt;div&gt;4) Typ&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="140" x="550" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="PEB1G8KyJJabdPe9rFn3-12" edge="1" parent="1" source="PEB1G8KyJJabdPe9rFn3-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="Q-9zdDLFiFwHk-50gJDE-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PEB1G8KyJJabdPe9rFn3-10" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="ucastnikAkce&lt;div&gt;1) idUcastnik&lt;/div&gt;&lt;div&gt;2) idAkce&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="140" x="140" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="PEB1G8KyJJabdPe9rFn3-15" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="PEB1G8KyJJabdPe9rFn3-2" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="90" y="250" as="sourcePoint" />
+            <mxPoint x="440" y="530" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PEB1G8KyJJabdPe9rFn3-16" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="Program&lt;div&gt;1) idProgramu&lt;/div&gt;&lt;div&gt;2) idDne&lt;/div&gt;&lt;div&gt;3) nazev&lt;/div&gt;&lt;div&gt;4) casZacatku&lt;/div&gt;&lt;div&gt;5) casKonce&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="140" x="250" y="770" as="geometry" />
+        </mxCell>
+        <mxCell id="PEB1G8KyJJabdPe9rFn3-22" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="&lt;div&gt;zprava&lt;/div&gt;&lt;div&gt;1) id&lt;/div&gt;&lt;div&gt;2) idUcastnik&lt;/div&gt;&lt;div&gt;3) idVlakno&lt;/div&gt;&lt;div&gt;4) content&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="140" x="440" y="910" as="geometry" />
+        </mxCell>
+        <mxCell id="PEB1G8KyJJabdPe9rFn3-24" edge="1" parent="1" source="PEB1G8KyJJabdPe9rFn3-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="PEB1G8KyJJabdPe9rFn3-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PEB1G8KyJJabdPe9rFn3-23" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;" value="&lt;div&gt;Vlakno&lt;/div&gt;&lt;div&gt;1) id&lt;/div&gt;&lt;div&gt;2) nazev&lt;/div&gt;&lt;div&gt;3) idChaty&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="140" x="620" y="870" as="geometry" />
+        </mxCell>
+        <mxCell id="nQ2wbbq2egnwGxLfZ0uC-4" edge="1" parent="1" source="nQ2wbbq2egnwGxLfZ0uC-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="PEB1G8KyJJabdPe9rFn3-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="nQ2wbbq2egnwGxLfZ0uC-2" parent="1" style="whiteSpace=wrap;html=1;" value="&lt;div&gt;Typ&lt;/div&gt;&lt;div&gt;1) id&lt;/div&gt;&lt;div&gt;2) jmeno&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="140" x="600" y="680" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
