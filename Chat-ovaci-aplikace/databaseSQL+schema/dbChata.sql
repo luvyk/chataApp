@@ -16,8 +16,8 @@ CREATE TABLE Chata (
   idChaty INT PRIMARY KEY AUTO_INCREMENT,
   jmeno VARCHAR(100),
   cena DECIMAL(10,2),
-  zacatek DATETIME,
-  konec DATETIME,
+  zacatek DATETIME null,
+  konec DATETIME null,
   kapacita INT
 );
 
@@ -43,8 +43,8 @@ CREATE TABLE Den (
 CREATE TABLE Mistnost (
   idMistnosti INT PRIMARY KEY AUTO_INCREMENT,
   idChaty INT,
-  nazevMistnosti VARCHAR(100),
-  zatahujeNaNoc BOOLEAN,
+  nazevMistnosti VARCHAR(100) null,
+  zatahujeNaNoc BOOLEAN null,
   FOREIGN KEY (idChaty) REFERENCES Chata(idChaty)
 );
 
@@ -69,9 +69,10 @@ CREATE TABLE Misto (
 CREATE TABLE Akce (
   idAkce INT PRIMARY KEY AUTO_INCREMENT,
   nazev VARCHAR(100),
+  popis VARCHAR(255) null,
   casOD DATETIME,
-  casDO DATETIME,
-  cenaNavic DECIMAL(10,2)
+  casDO DATETIME null,
+  cenaNavic DECIMAL(10,2) null
 );
 
 -- 9. UcastnikAkce
@@ -102,6 +103,7 @@ CREATE TABLE RoleUcastnik (
 CREATE TABLE Ukoly (
   idUkolu INT PRIMARY KEY AUTO_INCREMENT,
   nazev VARCHAR(100),
+  popis varchar(255) null,
   idUcastnik INT,
   idDen INT,
   splneno BOOLEAN,
@@ -114,6 +116,7 @@ CREATE TABLE Program (
   idProgramu INT PRIMARY KEY AUTO_INCREMENT,
   idDen INT,
   nazev VARCHAR(100),
+  popis VARCHAR(255) null,
   casZacatku DATETIME,
   casKonce DATETIME,
   FOREIGN KEY (idDen) REFERENCES Den(idDen)

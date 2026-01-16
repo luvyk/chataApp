@@ -9,5 +9,24 @@
 
         public Ucastnik Ucastnik { get; set; }
         public Vlakno Vlakno { get; set; }
+
+        public Zprava(int idZpravy, int idUcastnik, int idVlakno, string content, Ucastnik ucastnik, Vlakno vlakno)
+        {
+            IdZpravy = idZpravy;
+            IdUcastnik = idUcastnik;
+            IdVlakno = idVlakno;
+            Content = content;
+            Ucastnik = ucastnik;
+            Vlakno = vlakno;
+        }
+        public Zprava()
+        {
+            IdZpravy = 0;
+            IdUcastnik = 0;
+            IdVlakno = 0;
+            Content = string.Empty;
+            Ucastnik = new Ucastnik();
+            Vlakno = new Vlakno();
+        }
     }
 }
