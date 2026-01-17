@@ -1,29 +1,54 @@
-var builder = WebApplication.CreateBuilder(args);
+using Chat_ovaci_aplikace.Entities;
+using Microsoft.EntityFrameworkCore;
 
-// Add services to the container.
-builder.Services.AddControllersWithViews();
 
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+namespace Chat_ovaci_aplikace
 {
-    app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            var builder = WebApplication.CreateBuilder(args);
+
+            string connectionString = builder.Configuration.GetConnectionString("MySQL")
+                    ?? throw new InvalidOperationException("MySQL connection string is not provided");
+
+            builder.Services.AddDbContext<DatabaseContext>(options =>
+                    options.UseMySQL(connectionString)
+                );
+
+            builder.Services.AddDistributedMemoryCache();
+            builder.Services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+            // Add services to the container.
+            builder.Services.AddControllersWithViews();
+
+            var app = builder.Build();
+
+            app.UseStaticFiles();
+
+            app.UseAuthorization();
+
+            app.UseSession();
+
+            app.UseHttpsRedirection();
+            app.UseRouting();
+
+            app.UseAuthorization();
+
+            app.MapStaticAssets();
+
+            app.MapControllerRoute(
+            name: "default",
+            pattern: "{controller=Home}/{action=Index}/{id?}")
+            .WithStaticAssets();
+
+
+            app.Run();
+        }
+     }
 }
-
-app.UseHttpsRedirection();
-app.UseRouting();
-
-app.UseAuthorization();
-
-app.MapStaticAssets();
-
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}")
-    .WithStaticAssets();
-
-
-app.Run();
