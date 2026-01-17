@@ -1,10 +1,15 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Chat_ovaci_aplikace.Entities
 {
+    [Table("Mistnost")]
     public class Mistnost
     {
+        [Key]
         public int IdMistnosti { get; set; }
+        [ForeignKey(nameof(Chata))]
         public int IdChaty { get; set; }
         public string? NazevMistnosti { get; set; }
         public bool? ZatahujeNaNoc { get; set; }

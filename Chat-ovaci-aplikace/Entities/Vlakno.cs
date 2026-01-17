@@ -1,9 +1,15 @@
-﻿namespace Chat_ovaci_aplikace.Entities
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Chat_ovaci_aplikace.Entities
 {
+    [Table("Vlakno")]
     public class Vlakno
     {
+        [Key]
         public int IdVlakno { get; set; }
         public string Nazev { get; set; }
+        [ForeignKey(nameof(Chata))]
         public int IdChaty { get; set; }
 
         public Chata Chata { get; set; }

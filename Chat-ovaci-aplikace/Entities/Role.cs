@@ -1,7 +1,12 @@
-﻿namespace Chat_ovaci_aplikace.Entities
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Chat_ovaci_aplikace.Entities
 {
+    [Table("Role")]
     public class Role
     {
+        [Key]
         public int IdRole { get; set; }
         public string Nazev { get; set; }
 

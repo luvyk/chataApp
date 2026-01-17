@@ -1,9 +1,13 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Chat_ovaci_aplikace.Entities
 {
+    [Table("Typ")]
     public class Typ
     {
+        [Key]
         public int IdTyp { get; set; }
         public string Jmeno { get; set; }
 

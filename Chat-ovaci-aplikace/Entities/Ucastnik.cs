@@ -1,11 +1,17 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Chat_ovaci_aplikace.Entities
 {
+    [Table("Ucastnik")]
     public class Ucastnik
     {
+        [Key]
         public int IdUcastnik { get; set; }
+        [ForeignKey(nameof(Uzivatel))]
         public int IdUzivatel { get; set; }
+        [ForeignKey(nameof(Chata))]
         public int IdChaty { get; set; }
         public bool Zaplatil { get; set; }
 
