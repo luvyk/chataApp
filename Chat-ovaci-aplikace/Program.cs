@@ -1,5 +1,6 @@
 using Chat_ovaci_aplikace.Entities;
 using Microsoft.EntityFrameworkCore;
+using Chat_ovaci_aplikace.Database;
 
 
 namespace Chat_ovaci_aplikace
