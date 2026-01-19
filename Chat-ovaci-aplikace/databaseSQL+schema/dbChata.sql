@@ -8,6 +8,7 @@ CREATE TABLE Uzivatel (
   idUzivatel INT PRIMARY KEY AUTO_INCREMENT,
   jmeno VARCHAR(50),
   prijmeni VARCHAR(50),
+  username VARCHAR(50),
   heslo VARCHAR(255)
 );
 

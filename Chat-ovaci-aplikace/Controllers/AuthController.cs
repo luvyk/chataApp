@@ -29,27 +29,27 @@ namespace Eshop.Controllers
                 return View(loginViewModel);
             }
 
-            Ucet? account = _context.Ucty.SingleOrDefault(a => a.UzivatelskeJmeno == loginViewModel.Username);
-            if (account == null || account.Heslo != SHA256Helper.HashPassword(loginViewModel.Password))
+            Uzivatel? account = _context.Uzivatele.SingleOrDefault(a => a.Username == loginViewModel.Username);
+            if (account == null || account.Heslo != loginViewModel.Password)//SHA256Helper.HashPassword(loginViewModel.Password)) // DOČASNÉ ŘEŠENÍ!!!!! musí být změněno ASAP
             {
                 TempData["Message"] = "Wrong username or password!";
                 TempData["MessageType"] = "danger";
                 return View(loginViewModel);
             }
 
-            HttpContext.Session.SetString("User", account.UzivatelskeJmeno);
-            HttpContext.Session.SetString("Role", account.Role);
+            HttpContext.Session.SetString("User", account.Username);
+            //HttpContext.Session.SetString("Role", account.Role);
 
 
-            Ucet u = _context.Ucty.FirstOrDefault(x => x.UzivatelskeJmeno == account.UzivatelskeJmeno);
+            Uzivatel u = _context.Uzivatele.FirstOrDefault(x => x.Username == account.Username);
             if (u == null)
             {
-                Ucet ucet = new Ucet();
-                ucet.UzivatelskeJmeno = account.UzivatelskeJmeno;
-                ucet.Role = account.Role;
+                Uzivatel ucet = new Uzivatel();
+                ucet.Username = account.Username;
+                //ucet.Role = account.Role;
                 ucet.Heslo = "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92";
 
-                _context.Ucty.Add(ucet); 
+                _context.Uzivatele.Add(ucet); 
                 _context.SaveChanges();
             }
 
