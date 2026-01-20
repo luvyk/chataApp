@@ -13,7 +13,7 @@ namespace Chat_ovaci_aplikace.Entities
         [ForeignKey(nameof(Uzivatel))]
         public int IdUzivatel { get; set; }
 
-        public Uzivatel Uzivatel { get; set; }
+        public virtual Uzivatel Uzivatel { get; set; }
 
         public PrihlasenyUZ(int idPrihlaseni, DateTime dateTimePrihlaseni, string token, int idUzivatel, Uzivatel uzivatel)
         {

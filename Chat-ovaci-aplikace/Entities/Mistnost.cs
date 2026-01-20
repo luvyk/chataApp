@@ -14,9 +14,9 @@ namespace Chat_ovaci_aplikace.Entities
         public string? NazevMistnosti { get; set; }
         public bool? ZatahujeNaNoc { get; set; }
 
-        public Chata Chata { get; set; }
+        public virtual Chata Chata { get; set; }
 
-        public List<Misto> Mista { get; set; }
+        public virtual List<Misto> Mista { get; set; }
 
         public Mistnost(int idMistnosti, int idChaty, string nazevMistnosti, bool zatahujeNaNoc, Chata chata, List<Misto> mista)
         {

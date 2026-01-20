@@ -12,10 +12,10 @@ namespace Chat_ovaci_aplikace.Entities
         public int IdChaty { get; set; }
         public DateTime Datum { get; set; }
 
-        public Chata Chata { get; set; }
+        public virtual Chata Chata { get; set; }
 
-        public List<Ukoly> Ukoly { get; set; }
-        public List<Program> Programy { get; set; }
+        public virtual List<Ukoly> Ukoly { get; set; }
+        public virtual List<ProgramChaty> Programy { get; set; }
 
         public Den()
         {
@@ -24,10 +24,10 @@ namespace Chat_ovaci_aplikace.Entities
             Datum = DateTime.Now;
             Chata = new Chata();
             Ukoly = new List<Ukoly>();
-            Programy = new List<Program>();
+            Programy = new List<ProgramChaty>();
         }
 
-        public Den(int idDen, int idChaty, DateTime datum, Chata chata, List<Ukoly> ukoly, List<Program> programy)
+        public Den(int idDen, int idChaty, DateTime datum, Chata chata, List<Ukoly> ukoly, List<ProgramChaty> programy)
         {
             IdDen = idDen;
             IdChaty = idChaty;

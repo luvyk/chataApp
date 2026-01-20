@@ -11,7 +11,7 @@ namespace Chat_ovaci_aplikace.Entities
         public int IdTyp { get; set; }
         public string Jmeno { get; set; }
 
-        public List<Misto> Mista { get; set; }
+        public virtual List<Misto> Mista { get; set; }
 
         public Typ(int idTyp, string jmeno, List<Misto> mista)
         {

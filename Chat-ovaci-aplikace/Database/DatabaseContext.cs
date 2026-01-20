@@ -11,7 +11,7 @@ namespace Chat_ovaci_aplikace.Database
         public DbSet<Mistnost> Mistnosti { get; set; }
         public DbSet<Misto> Mista { get; set; }
         public DbSet<PrihlasenyUZ> PrihlaseniUZ { get; set; }
-        public DbSet<Program> Programy { get; set; }
+        public DbSet<ProgramChaty> Programy { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<RoleUcastnik> RoleUcastniks { get; set; }
         public DbSet<Typ> Types { get; set; }

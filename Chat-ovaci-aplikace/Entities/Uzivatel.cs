@@ -13,8 +13,8 @@ namespace Chat_ovaci_aplikace.Entities
         public string Username { get; set; }
         public string Heslo { get; set; }
 
-        public List<Ucastnik> Ucastnici { get; set; }
-        public List<PrihlasenyUZ> Prihlaseni { get; set; }
+        public virtual List<Ucastnik> Ucastnici { get; set; }
+        public virtual List<PrihlasenyUZ> Prihlaseni { get; set; }
 
         public Uzivatel(int idUzivatel, string jmeno, string prijmeni, string heslo, List<Ucastnik> ucastnici, List<PrihlasenyUZ> prihlaseni)
         {

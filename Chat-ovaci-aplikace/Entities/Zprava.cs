@@ -14,8 +14,8 @@ namespace Chat_ovaci_aplikace.Entities
         public int IdVlakno { get; set; }
         public string Content { get; set; }
 
-        public Ucastnik Ucastnik { get; set; }
-        public Vlakno Vlakno { get; set; }
+        public virtual Ucastnik Ucastnik { get; set; }
+        public virtual Vlakno Vlakno { get; set; }
 
         public Zprava(int idZpravy, int idUcastnik, int idVlakno, string content, Ucastnik ucastnik, Vlakno vlakno)
         {

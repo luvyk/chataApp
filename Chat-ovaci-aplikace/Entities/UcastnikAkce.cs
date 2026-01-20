@@ -11,8 +11,8 @@ namespace Chat_ovaci_aplikace.Entities
         [ForeignKey(nameof(Akce))]
         public int IdAkce { get; set; }
 
-        public Ucastnik Ucastnik { get; set; }
-        public Akce Akce { get; set; }
+        public virtual Ucastnik Ucastnik { get; set; }
+        public virtual Akce Akce { get; set; }
 
         public UcastnikAkce(int idUcastnik, int idAkce, Ucastnik ucastnik, Akce akce)
         {

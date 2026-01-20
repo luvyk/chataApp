@@ -12,8 +12,8 @@ namespace Chat_ovaci_aplikace.Entities
         [ForeignKey(nameof(Role))]
         public int IdRole { get; set; }
 
-        public Ucastnik Ucastnik { get; set; }
-        public Role Role { get; set; }
+        public virtual Ucastnik Ucastnik { get; set; }
+        public virtual Role Role { get; set; }
 
         public RoleUcastnik(int idUcastnik, int idRole, Ucastnik ucastnik, Role role)
         {

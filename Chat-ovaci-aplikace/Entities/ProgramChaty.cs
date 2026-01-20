@@ -1,10 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Chat_ovaci_aplikace.Entities
 {
     [Table("Program")]
-    public class Program
+    public class ProgramChaty
     {
         [Key]
         public int IdProgramu { get; set; }
@@ -15,9 +16,9 @@ namespace Chat_ovaci_aplikace.Entities
         public DateTime CasZacatku { get; set; }
         public DateTime CasKonce { get; set; }
 
-        public Den Den { get; set; }
+        public virtual Den Den { get; set; }
 
-        public Program(int idProgramu, int idDen, string nazev, string popis, DateTime casZacatku, DateTime casKonce, Den den)
+        public ProgramChaty(int idProgramu, int idDen, string nazev, string popis, DateTime casZacatku, DateTime casKonce, Den den)
         {
             IdProgramu = idProgramu;
             IdDen = idDen;
@@ -27,7 +28,7 @@ namespace Chat_ovaci_aplikace.Entities
             CasKonce = casKonce;
             Den = den;
         }
-        public Program()
+        public ProgramChaty()
         {
             IdProgramu = 0;
             IdDen = 0;

@@ -10,7 +10,7 @@ namespace Chat_ovaci_aplikace.Entities
         public int IdRole { get; set; }
         public string Nazev { get; set; }
 
-        public List<RoleUcastnik> RoleUcastnik { get; set; }
+        public virtual List<RoleUcastnik> RoleUcastnik { get; set; }
 
         public Role(int idRole, string nazev, List<RoleUcastnik> roleUcastnik)
         {

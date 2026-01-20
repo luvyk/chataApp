@@ -12,9 +12,9 @@ namespace Chat_ovaci_aplikace.Entities
         [ForeignKey(nameof(Chata))]
         public int IdChaty { get; set; }
 
-        public Chata Chata { get; set; }
+        public virtual Chata Chata { get; set; }
 
-        public List<Zprava> Zpravy { get; set; }
+        public virtual List<Zprava> Zpravy { get; set; }
 
         public Vlakno(int idVlakno, string nazev, int idChaty, Chata chata, List<Zprava> zpravy)
         {

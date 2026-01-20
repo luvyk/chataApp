@@ -16,8 +16,8 @@ namespace Chat_ovaci_aplikace.Entities
         public int IdDen { get; set; }
         public bool Splneno { get; set; }
 
-        public Ucastnik Ucastnik { get; set; }
-        public Den Den { get; set; }
+        public virtual Ucastnik Ucastnik { get; set; }
+        public virtual Den Den { get; set; }
 
         public Ukoly(int idUkolu, string nazev, string popis, int idUcastnik, int idDen, bool splneno, Ucastnik ucastnik, Den den)
         {

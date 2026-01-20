@@ -14,7 +14,7 @@ namespace Chat_ovaci_aplikace.Entities
         public DateTime? CasDo { get; set; }
         public decimal? CenaNavic { get; set; }
 
-        public List<UcastnikAkce> Ucastnici { get; set; }
+        public virtual List<UcastnikAkce> Ucastnici { get; set; }
 
         public Akce(int idAkce, string nazev, string popis,DateTime casOd, DateTime casDo, decimal cenaNavic, List<UcastnikAkce> ucastnici)
         {

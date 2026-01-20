@@ -14,9 +14,9 @@ namespace Chat_ovaci_aplikace.Entities
         public int IdUcastnik { get; set; }
         public int IdTyp { get; set; }
 
-        public Mistnost Mistnost { get; set; }
-        public Ucastnik Ucastnik { get; set; }
-        public Typ Typ { get; set; }
+        public virtual Mistnost Mistnost { get; set; }
+        public virtual Ucastnik Ucastnik { get; set; }
+        public virtual Typ Typ { get; set; }
 
         public Misto(int idMisto, int idMistnosti, int idUcastnik, int idTyp, Mistnost mistnost, Ucastnik ucastnik, Typ typ)
         {
