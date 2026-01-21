@@ -48,6 +48,7 @@ namespace Chat_ovaci_aplikace.Controllers
             model.Name = "Login";
             model.zpravas = new List<Entities.Zprava> { };
             model.vlakno = new List<Entities.Vlakno> { };
+            model.chatas = new List<Entities.Chata> { };
 
             return model;
         }
@@ -64,10 +65,15 @@ namespace Chat_ovaci_aplikace.Controllers
                         .Select(u => u.IdChaty)
                         .Contains(v.IdChaty)).ToList();
 
-            var zprava = _databaseContext.Zpravy
+            model.zpravas = _databaseContext.Zpravy
                 .Where(x => _databaseContext.Vlakna
                 .Select(y => y.IdVlakno)
                 .Contains(x.IdVlakno)).ToList();
+
+            model.chatas = _databaseContext.Chaty
+                        .Where(x => _databaseContext.Ucastnici
+                        .Select(y => y.IdUcastnik)
+                        .Contains(model.IDUzivatele)).ToList();
 
             return model;
         }

@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace Chat_ovaci_aplikace.Entities
 {
@@ -14,9 +15,16 @@ namespace Chat_ovaci_aplikace.Entities
         public DateTime? Konec { get; set; }
         public int Kapacita { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<Ucastnik> Ucastnici { get; set; }
+        [JsonIgnore]
+
         public virtual ICollection<Den> Dny { get; set; }
+        [JsonIgnore]
+
         public virtual ICollection<Mistnost> Mistnosti { get; set; }
+        [JsonIgnore]
+
         public virtual ICollection<Vlakno> Vlakna { get; set; }
 
         public Chata(int idChaty, string jmeno, decimal cena, DateTime zacatek, DateTime konec, int kapacita, ICollection<Ucastnik> ucastnici, ICollection<Den> dny, ICollection<Mistnost> mistnosti, ICollection<Vlakno> vlakna)

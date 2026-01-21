@@ -1,11 +1,40 @@
-﻿@using Chat_ovaci_aplikace.Models.MainPage;
+﻿@using System.Text.Json
+@using Chat_ovaci_aplikace.Models.MainPage
 
 @model MainPageViewModel
 @{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome @Model.Name</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<script>
+    // Převedení modelu do JSON
+    const chatasData = @Html.Raw(JsonSerializer.Serialize(Model.chatas));
+
+    console.log(chatasData); // ověření v konzoli
+    document.createElement("div");
+
+</script>
+
+<div class="container-fluid h-100">
+    <div class="row h-100">
+
+        <!-- Levý panel -->
+        <div class="col-4 retro-panel kalendarPanel">
+            Levý panel
+        </div>
+
+        <!-- Pravý panel rozdělený vertikálně -->
+        <div class="col-8 d-flex flex-column">
+
+            <div class="retro-panel mb-3" style="flex: 1;">
+                Horní pravý panel
+            </div>
+
+            <div class="retro-panel" style="flex: 1;">
+                Dolní pravý panel
+            </div>
+
+        </div>
+
+    </div>
 </div>
