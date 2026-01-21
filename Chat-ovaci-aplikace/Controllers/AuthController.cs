@@ -40,7 +40,7 @@ namespace Eshop.Controllers
             HttpContext.Session.SetString("User", account.Username);
             //HttpContext.Session.SetString("Role", account.Role);
 
-
+            /*
             Uzivatel u = _context.Uzivatele.FirstOrDefault(x => x.Username == account.Username);
             if (u == null)
             {
@@ -52,6 +52,7 @@ namespace Eshop.Controllers
                 _context.Uzivatele.Add(ucet); 
                 _context.SaveChanges();
             }
+            */
 
             return RedirectToAction("Index", "Home");
         }

@@ -1,50 +1,168 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="cs">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Chat_ovaci_aplikace</title>
-    <script type="importmap"></script>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Chat_ovaci_aplikace.styles.css" asp-append-version="true" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] - RetroWeb</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+
+    <style>
+        /* Retro font */
+        import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+        body {
+            background: #f2e9d8;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 12px;
+            color: #333;
+        }
+
+        /* Texturované pozadí */
+        .retro-bg {
+            background: repeating-linear-gradient(
+                45deg,
+                #f2e9d8,
+                #f2e9d8 10px,
+                #e8dfcf 10px,
+                #e8dfcf 20px
+            );
+        }
+
+        /* Navigace */
+        .retro-nav {
+            background: #c7b198;
+            border-bottom: 4px solid #8b6f47;
+            padding: 10px 20px;
+        }
+
+        .retro-nav a {
+            color: #3b2f2f;
+            text-decoration: none;
+            margin-right: 20px;
+            padding: 6px 10px;
+            border: 2px solid #8b6f47;
+            background: #e8dfcf;
+            box-shadow: 2px 2px 0 #8b6f47;
+            font-size: 10px;
+        }
+
+        .retro-nav a:hover {
+            background: #d6c7b2;
+            box-shadow: 1px 1px 0 #8b6f47;
+            transform: translate(1px, 1px);
+        }
+        .logout-link {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background: #c7b198;
+    border: 3px solid #8b6f47;
+    padding: 8px 12px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 10px;
+    color: #3b2f2f;
+    text-decoration: none;
+    box-shadow: 3px 3px 0 #8b6f47;
+}
+
+.logout-link:hover {
+    background: #bfa588;
+    box-shadow: 1px 1px 0 #8b6f47;
+    transform: translate(2px, 2px);
+}
+
+        /* Profil */
+        .profile-box {
+            display: flex;
+            align-items: center;
+        }
+
+        .profile-box img {
+            width: 40px;
+            height: 40px;
+            border-radius: 4px;
+            margin: 0px;
+            margin-right: 10px;
+            border: 2px solid #3b2f2f;
+        }
+
+        /* Hlavní panel */
+        .main-panel {
+            background: #fff;
+            border: 4px solid #c7b198;
+            padding: 20px;
+            min-height: 80vh;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+
+        /* Boční panely */
+        .side-panel {
+            min-height: 80vh;
+        }
+    </style>
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Chat_ovaci_aplikace</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
+
+<body class="retro-bg">
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <!-- Levý buffer -->
+            <div class="col-2 side-panel"></div>
+
+            <!-- Střední panel -->
+            <div class="col-8">
+
+                <!-- Navigace -->
+                <nav class="retro-nav d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center">
+                        <a asp-action="Index" asp-controller="Home">
+                        <img src="/obrazek/přidatSeNaChatu.png" alt="Logo" style="width:40px; height:40px; margin-right:10px;" />
+                        <span>RetroWeb</span>
+                        </a>
+
+                        <div class="ms-4">
+                            <a asp-controller="" asp-action="">Domů</a>
+                            @if (Context.Session.GetString("User") != null)
+                            {
+                                <a asp-controller="" asp-action="">O nás</a>
+                                <a asp-controller="" asp-action="">Kontakt</a>
+                            }
+                        </div>
+                    </div>
+
+                    <a asp-controller="Auth" asp-action="Login">
+                    <div class="profile-box">
+                            <img src="/obrazek/přidatSeNaChatu.png" alt="obrazek" />
+                        <span>@(Context.Session.GetString("User") ?? "Přihlásit se")</span>
+                    </div>
+                    </a>
+                </nav>
+
+                <!-- Obsah stránky -->
+                <main class="main-panel mt-3">
+                    @RenderBody()
+                </main>
+
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+
+            <!-- Pravý buffer -->
+            <div class="col-2 side-panel"></div>
+
+        </div>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2026 - Chat_ovaci_aplikace - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+    @RenderSection("Scripts", required: false)
+
+    @if (Context.Session.GetString("User") != null)
+    {
+    <a asp-controller="Auth" asp-action="Logout" class="logout-link">Odhlásit se</a>
+    }
+
 </body>
 </html>
