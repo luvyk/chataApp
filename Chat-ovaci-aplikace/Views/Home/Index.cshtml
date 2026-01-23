@@ -6,25 +6,67 @@
     ViewData["Title"] = "Home Page";
 }
 
-<script>
-    // Převedení modelu do JSON
-    const chatasData = @Html.Raw(JsonSerializer.Serialize(Model.chatas));
-
-    console.log(chatasData); // ověření v konzoli
-    document.createElement("div");
-
-    for(i = 0; i < chatasData.lenght; i++)
-    {
-        console.log(chatasData[i].Zacatek);
-    }
-</script>
-
 <div class="container-fluid h-100">
     <div class="row h-100">
 
         <!-- Levý panel -->
-        <div class="col-4 retro-panel kalendarPanel">
-            Levý panel
+        <div id="chataContainer" class="col-4 retro-panel">
+            <div class="retro-panel retro-bg">
+    <table class="retro-table">
+        <thead>
+            <tr>
+                <th>Chata</th>
+                <th>Organizátor</th>
+                <th>Místo</th>
+                <th>Adresa</th>
+                <th>Začátek</th>
+                <th>Zaplatil</th>
+                <th>Účast</th>
+                <th>Volná lůžka</th>
+                <th>Odpočet</th>
+            </tr>
+        </thead>
+        <tbody>
+                        @foreach (ChataMainViewModel mainModel in Model.chatas)
+                        {
+
+                            <tr>
+                                <td>@mainModel.JmenoChaty</td>
+                                <td>@mainModel.Organizator</td>
+                                <td>@mainModel.Mesto, @mainModel.Zeme<br />@mainModel.Cast</td>
+                                <td>@mainModel.Ulice<br />@mainModel.PSC</td>
+                                <td>@mainModel.Zacatek.ToString("dd.MM.yyyy HH:mm")</td>
+                                <td>
+                                    @if (mainModel.Zaplatil)
+                                    {
+                                        <span class="retro-badge-yes">ANO</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="retro-badge-no">NE</span>
+                                    }
+                                </td>
+                                <td>
+                                    @if (mainModel.UcastniSe)
+                                    {
+                                        <span class="retro-badge-yes">ANO</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="retro-badge-no">NE</span>
+                                    }
+                                </td>
+                                <td>@mainModel.volnaLuzka</td>
+                                <td class="stopky">zde bude čas</td>
+                            </tr>
+                            <script>
+
+                             </script>
+                        }
+                    </tbody>
+                </table>
+            </div>
+                        Levý panel
         </div>
 
         <!-- Pravý panel rozdělený vertikálně -->
@@ -42,3 +84,7 @@
 
     </div>
 </div>
+
+<script>
+        
+</script>

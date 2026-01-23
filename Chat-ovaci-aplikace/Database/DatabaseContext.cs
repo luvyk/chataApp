@@ -21,6 +21,7 @@ namespace Chat_ovaci_aplikace.Database
         public DbSet<Uzivatel> Uzivatele { get; set; }
         public DbSet<Vlakno> Vlakna { get; set; }
         public DbSet<Zprava> Zpravy { get; set; }
+        public DbSet<Rezim> Rezimy { get; set; }
         public DatabaseContext(DbContextOptions options)
             : base(options)
         { }

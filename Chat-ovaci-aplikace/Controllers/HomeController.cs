@@ -48,7 +48,7 @@ namespace Chat_ovaci_aplikace.Controllers
             model.Name = "Login";
             model.zpravas = new List<Entities.Zprava> { };
             model.vlakno = new List<Entities.Vlakno> { };
-            model.chatas = new List<Entities.Chata> { };
+            model.chatas = new List<Models.MainPage.ChataMainViewModel> { };
 
             return model;
         }
@@ -70,11 +70,62 @@ namespace Chat_ovaci_aplikace.Controllers
                 .Select(y => y.IdVlakno)
                 .Contains(x.IdVlakno)).ToList();
 
-            model.chatas = _databaseContext.Chaty
+            List<Chata> tempChaty = _databaseContext.Chaty
                         .Where(x => _databaseContext.Ucastnici
-                        .Select(y => y.IdUcastnik)
-                        .Contains(model.IDUzivatele)).ToList();
+                        .Where(z => z.IdUzivatel == model.IDUzivatele)
+                        .Select(y => y.IdChaty)
+                        .Contains(x.IdChaty)).ToList();
 
+            string organizator = "";
+            int realnaObsazenost = 0;
+            foreach(Chata ch in tempChaty)
+            {
+                foreach(Ucastnik uc in ch.Ucastnici)
+                {
+
+                    foreach(RoleUcastnik ru in uc.RoleUcastnik)
+                    {
+                        if(ru.Role.Nazev == "MainOrg")
+                        {
+                            organizator = uc.Uzivatel.Username;
+                        }
+                    }
+                }
+                foreach(Mistnost mi in ch.Mistnosti)
+                {
+                    foreach(Misto mis in mi.Mista)
+                    {
+                        realnaObsazenost++;
+                    }
+                }
+            }
+            Console.WriteLine(tempChaty[1].Ucastnici[0].Zaplatil);
+            for(int i = 0; i < tempChaty.Count; i++)
+            {
+                model.chatas.Add(new ChataMainViewModel());
+                model.chatas[i].JmenoChaty = tempChaty[i].Jmeno;
+                model.chatas[i].Organizator = organizator;
+                model.chatas[i].Zeme = tempChaty[i].Zeme;
+                model.chatas[i].Mesto = tempChaty[i].Mesto;
+                model.chatas[i].Cast = tempChaty[i].CastMesta;
+                model.chatas[i].Ulice = tempChaty[i].Ulice;
+                model.chatas[i].PSC = tempChaty[i].PSC;
+                model.chatas[i].Zacatek = tempChaty[i].Zacatek;
+                model.chatas[i].Zaplatil = tempChaty[i].Ucastnici.SingleOrDefault(s => s.IdUzivatel == model.IDUzivatele).Zaplatil;
+                model.chatas[i].UcastniSe = tempChaty[i].Ucastnici.SingleOrDefault(s => s.IdUzivatel == model.IDUzivatele).ZucastniSe;
+                if(realnaObsazenost < tempChaty[i].Kapacita)
+                {
+                    model.chatas[i].volnaLuzka = "Volna Mista";
+                }
+                else
+                {
+                    model.chatas[i].volnaLuzka = "Plno";
+                }
+                
+            }
+
+
+            Console.WriteLine($"Našel jsem {model.chatas.Count} chat");
             return model;
         }
     }

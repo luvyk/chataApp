@@ -16,10 +16,14 @@ CREATE TABLE Uzivatel (
 CREATE TABLE Chata (
   idChaty INT PRIMARY KEY AUTO_INCREMENT,
   jmeno VARCHAR(100),
-  cena DECIMAL(10,2),
-  zacatek DATETIME null,
-  konec DATETIME null,
-  kapacita INT
+  zacatek DATETIME,
+  konec DATETIME,
+  kapacita INT,
+  zeme VARCHAR(50),
+  mesto VARCHAR(50),
+  castMesta VARCHAR(50) NULL,
+  ulice VARCHAR(50),
+  PSC VARCHAR(20)
 );
 
 -- 3. Ucastnik
@@ -27,7 +31,9 @@ CREATE TABLE Ucastnik (
   idUcastnik INT PRIMARY KEY AUTO_INCREMENT,
   idUzivatel INT,
   idChaty INT,
+  sumaCeny DECIMAL(10,2),
   zaplatil BOOLEAN,
+  zucastniSe BOOLEAN,
   FOREIGN KEY (idUzivatel) REFERENCES Uzivatel(idUzivatel),
   FOREIGN KEY (idChaty) REFERENCES Chata(idChaty)
 );
@@ -61,6 +67,7 @@ CREATE TABLE Misto (
   idMistnosti INT,
   idUcastnik INT,
   idTyp INT,
+  cenaMista DECIMAL(10,2),
   FOREIGN KEY (idMistnosti) REFERENCES Mistnost(idMistnosti),
   FOREIGN KEY (idUcastnik) REFERENCES Ucastnik(idUcastnik),
   FOREIGN KEY (idTyp) REFERENCES Typ(idTyp)
@@ -148,4 +155,17 @@ CREATE TABLE PrihlasenyUZ (
   token VARCHAR(255),
   idUzivatel INT,
   FOREIGN KEY (idUzivatel) REFERENCES Uzivatel(idUzivatel)
+);
+
+-- 17. Režim ve kterém se úèastník zapojuje, napøíklad se pouze úèastní výletu (zdarma), nebo v chatì nepøespává a pøijel jen na pùl dne
+-- má smysl používat pouze pokud se úèastník úèastní jinak, než na celý, nebo polovièní pobyt
+CREATE TABLE Rezim (
+	idRezim INT PRIMARY KEY AUTO_INCREMENT,
+	idDen INT,
+	idUcastnik INT,
+	nazev VARCHAR(50),
+	popis VARCHAR(255) NULL,
+	cena DECIMAL(10,2),
+	FOREIGN KEY (idDen) REFERENCES Den(idDen),
+	FOREIGN KEY (idUcastnik) REFERENCES Ucastnik(idUcastnik)
 );

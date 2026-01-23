@@ -114,6 +114,50 @@
         .side-panel {
             min-height: 80vh;
         }
+
+        
+        .retro-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 10px;
+        background: #f7f1e6;
+        border: 3px solid #c7b198;
+        box-shadow: 3px 3px 0 #8b6f47;
+    }
+
+    .retro-table th,
+    .retro-table td {
+        border: 2px solid #c7b198;
+        padding: 4px 6px;
+        text-align: left;
+    }
+
+    .retro-table th {
+        background: #c7b198;
+        color: #3b2f2f;
+        text-transform: uppercase;
+    }
+
+    .retro-table tr:nth-child(even) {
+        background: #e8dfcf;
+    }
+
+    .retro-badge-yes {
+        background: #7acb7a;
+        border: 2px solid #3b7b3b;
+        padding: 1px 4px;
+        box-shadow: 2px 2px 0 #3b7b3b;
+        font-size: 9px;
+    }
+
+    .retro-badge-no {
+        background: #f28b82;
+        border: 2px solid #b23b2b;
+        padding: 1px 4px;
+        box-shadow: 2px 2px 0 #b23b2b;
+        font-size: 9px;
+    }
+
     </style>
 </head>
 
@@ -140,8 +184,8 @@
                             <a asp-controller="" asp-action="">Domů</a>
                             @if (Context.Session.GetString("User") != null)
                             {
-                                <a asp-controller="" asp-action="">O nás</a>
-                                <a asp-controller="" asp-action="">Kontakt</a>
+                                <a asp-controller="" asp-action="">Přidat se na chatu</a>
+                                <a asp-controller="" asp-action="">Založit chatu</a>
                             }
                         </div>
                     </div>
