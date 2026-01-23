@@ -10,69 +10,41 @@
     <div class="row h-100">
 
         <!-- Levý panel -->
+
         <div id="chataContainer" class="col-4 retro-panel">
-            <div class="retro-panel retro-bg">
-    <table class="retro-table">
-        <thead>
-            <tr>
-                <th>Chata</th>
-                <th>Organizátor</th>
-                <th>Místo</th>
-                <th>Adresa</th>
-                <th>Začátek</th>
-                <th>Zaplatil</th>
-                <th>Účast</th>
-                <th>Volná lůžka</th>
-                <th>Odpočet</th>
-            </tr>
-        </thead>
-        <tbody>
-                        @foreach (ChataMainViewModel mainModel in Model.chatas)
+            
+                @foreach(ChataMainViewModel Model in Model.chatas)
+                {
+                <div class="retro-panel retro-bg">
+                    <div class="chata-card" style="border:1px solid #ccc;padding:10px;margin:5px;font-family:sans-serif;font-size:14px;">
+                        <h3 style="margin:0 0 5px 0;">@Model.JmenoChaty</h3>
+                        <div><strong>Organizátor:</strong> @Model.Organizator</div>
+                        <div><strong>Adresa:</strong> @Model.Ulice, @Model.PSC @Model.Mesto, @Model.Zeme</div>
+                        @if (!string.IsNullOrEmpty(Model.Cast))
                         {
-
-                            <tr>
-                                <td>@mainModel.JmenoChaty</td>
-                                <td>@mainModel.Organizator</td>
-                                <td>@mainModel.Mesto, @mainModel.Zeme<br />@mainModel.Cast</td>
-                                <td>@mainModel.Ulice<br />@mainModel.PSC</td>
-                                <td>@mainModel.Zacatek.ToString("dd.MM.yyyy HH:mm")</td>
-                                <td>
-                                    @if (mainModel.Zaplatil)
-                                    {
-                                        <span class="retro-badge-yes">ANO</span>
-                                    }
-                                    else
-                                    {
-                                        <span class="retro-badge-no">NE</span>
-                                    }
-                                </td>
-                                <td>
-                                    @if (mainModel.UcastniSe)
-                                    {
-                                        <span class="retro-badge-yes">ANO</span>
-                                    }
-                                    else
-                                    {
-                                        <span class="retro-badge-no">NE</span>
-                                    }
-                                </td>
-                                <td>@mainModel.volnaLuzka</td>
-                                <td class="stopky">zde bude čas</td>
-                            </tr>
-                            <script>
-
-                             </script>
+                            <div><strong>Část:</strong> @Model.Cast</div>
                         }
-                    </tbody>
-                </table>
-            </div>
-                        Levý panel
+                        <div><strong>Začátek:</strong> @Model.Zacatek.ToString("dd.MM.yyyy HH:mm")</div>
+                        <div><strong>Volná lůžka:</strong> @Model.volnaLuzka</div>
+                        <div>
+                            <strong>Účast:</strong>
+                            @(Model.UcastniSe ? "účastní se" : "neúčastní se")
+                            &nbsp;|&nbsp;
+                            <strong>Platba:</strong>
+                            @(Model.Zaplatil ? "zaplaceno" : "nezaplaceno")
+                        </div>
+                    </div>
+
+                 </div>
+                }
+                Levý panel
         </div>
 
         <!-- Pravý panel rozdělený vertikálně -->
         <div class="col-8 d-flex flex-column">
 
-            <div class="retro-panel mb-3" style="flex: 1;">
+            <div class="retro-panel mb-3" style="flex: 1;max-height: 100px;">
+
                 Horní pravý panel
             </div>
 
