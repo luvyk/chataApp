@@ -1,137 +1,116 @@
--- 1.
+-- 1) Uzivatel
 INSERT INTO Uzivatel (jmeno, prijmeni, username, heslo) VALUES
 ('Lukáš', 'Novák', 'lukas', 'heslo1'),
 ('Petr', 'Svoboda', 'petr', 'heslo2'),
 ('Anna', 'Dvoøáková', 'anna', 'heslo3'),
-('Karel', 'Beneš', 'karel', 'heslo4'),
-('Jana', 'Králová', 'jana', 'heslo5'),
-('Tomáš', 'Vlèek', 'tomas', 'heslo6');
+('Karel', 'Beneš', 'karel', 'heslo4');
 
--- 2.
+-- 2) Chata
 INSERT INTO Chata (jmeno, zacatek, konec, kapacita, zeme, mesto, castMesta, ulice, PSC) VALUES
-('Zimní chata 2025', '2025-02-10 16:00', '2025-02-15 10:00', 20, 'Èesko', 'Špindlerùv Mlın', 'Bedøichov', 'Horská 12', '54351'),
-('Letní chata 2025', '2025-07-05 14:00', '2025-07-12 10:00', 25, 'Èesko', 'Lipno', NULL, 'Pøehradní 8', '38278'),
-('Podzimní chata 2025', '2025-10-01 15:00', '2025-10-05 11:00', 15, 'Èesko', 'Jizerka', NULL, 'Jizerská 3', '46850');
+('Chata U Lesa', '2025-07-10 15:00:00', '2025-07-15 10:00:00', 20, 'Èesko', 'Brno', 'Bystrc', 'Lesní 12', '60200'),
+('Horská Chata', '2025-08-01 14:00:00', '2025-08-07 11:00:00', 15, 'Èesko', 'Špindlerùv Mlın', NULL, 'Horská 5', '54351');
 
--- 3.
+-- 3) Ucastnik
 INSERT INTO Ucastnik (idUzivatel, idChaty, sumaCeny, zaplatil, zucastniSe) VALUES
-(1, 1, 2500, TRUE, TRUE),
-(2, 1, 2500, FALSE, TRUE),
-(3, 1, 2500, TRUE, TRUE),
+(1, 1, 2500.00, TRUE, TRUE),
+(2, 1, 2500.00, FALSE, TRUE),
+(3, 1, 1500.00, TRUE, TRUE),
+(4, 2, 3000.00, FALSE, TRUE);
 
-(4, 2, 3000, TRUE, TRUE),
-(5, 2, 3000, FALSE, TRUE),
-(6, 2, 3000, TRUE, FALSE),
-
-(1, 3, 1800, TRUE, TRUE),
-(3, 3, 1800, TRUE, TRUE);
-
--- 4.
+-- 4) Den
 INSERT INTO Den (idChaty, datum) VALUES
-(1, '2025-02-11'),
-(1, '2025-02-12'),
-(1, '2025-02-13'),
-(1, '2025-02-14'),
+(1, '2025-07-10'),
+(1, '2025-07-11'),
+(1, '2025-07-12'),
+(2, '2025-08-01'),
+(2, '2025-08-02');
 
-(2, '2025-07-06'),
-(2, '2025-07-07'),
-(2, '2025-07-08'),
-
-(3, '2025-10-02'),
-(3, '2025-10-03');
-
--- 5.
+-- 5) Mistnost
 INSERT INTO Mistnost (idChaty, nazevMistnosti, zatahujeNaNoc) VALUES
-(1, 'Pokoj A', TRUE),
-(1, 'Pokoj B', FALSE),
-(2, 'Lonice 1', TRUE),
-(2, 'Lonice 2', TRUE),
-(3, 'Hlavní pokoj', FALSE);
+(1, 'Pokoj 1', TRUE),
+(1, 'Pokoj 2', FALSE),
+(2, 'Horskı pokoj', TRUE);
 
--- 6.
+-- 6) Typ
 INSERT INTO Typ (jmeno) VALUES
 ('Postel'),
 ('Matrace'),
-('Karimatka'),
-('Dvojlùko');
+('Houpací sí');
 
--- 7.
-INSERT INTO Misto (idMistnosti, idUcastnik, idTyp, cenaMista) VALUES
-(1, 1, 1, 500),
-(1, 2, 2, 300),
-(2, 3, 1, 500),
+-- 7) Misto
+INSERT INTO Misto (idMistnosti, idTyp, cenaMista) VALUES
+(1, 1, 200.00),
+(1, 1, 200.00),
+(1, 2, 100.00),
+(2, 1, 150.00),
+(3, 3, 50.00);
 
-(3, 4, 4, 700),
-(4, 5, 1, 500),
-
-(5, 7, 2, 300);
-
--- 8.
+-- 8) Akce
 INSERT INTO Akce (nazev, popis, casOD, casDO, cenaNavic) VALUES
-('Lyování', 'Celodenní skipas', '2025-02-12 09:00', '2025-02-12 16:00', 800),
-('Sauna', 'Veèerní relax', '2025-02-13 19:00', NULL, 200),
-('Vılet lodí', 'Okruh po pøehradì', '2025-07-07 10:00', '2025-07-07 13:00', 300);
+('Vılet na rozhlednu', 'Pìší túra', '2025-07-11 09:00:00', '2025-07-11 14:00:00', 0),
+('Grilování', 'Veèerní grilovaèka', '2025-07-11 18:00:00', NULL, 150.00),
+('Sauna', NULL, '2025-08-02 20:00:00', NULL, 200.00);
 
--- 9.
+-- 9) UcastnikAkce
 INSERT INTO UcastnikAkce (idUcastnik, idAkce) VALUES
 (1, 1),
 (2, 1),
+(1, 2),
 (3, 2),
-(4, 3),
-(5, 3);
+(4, 3);
 
--- 10.
+-- 10) Role
 INSERT INTO Role (nazev) VALUES
-('MainOrg'),
-('Org'),
+('Organizátor'),
 ('Kuchaø'),
 ('Úèastník');
 
--- 11.
+-- 11) RoleUcastnik
 INSERT INTO RoleUcastnik (idUcastnik, idRole) VALUES
-(1, 1),  -- Lukáš = MainOrg zimní chaty
-(2, 4),
-(3, 4),
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 3);
 
-(4, 1),  -- Karel = MainOrg letní chaty
-(5, 4),
-
-(7, 1);  -- Lukáš = MainOrg podzimní chaty
-
--- 12.
+-- 12) Ukoly
 INSERT INTO Ukoly (nazev, popis, idUcastnik, idDen, splneno) VALUES
-('Nákup jídla', 'Koupit snídani', 1, 1, FALSE),
-('Úklid', 'Vysát spoleèné prostory', 2, 2, TRUE),
-('Pøíprava veèeøe', 'Uvaøit guláš', 3, 3, FALSE),
-('Rozdìlat oheò', 'Pøíprava ohništì', 4, 5, TRUE);
+('Nákup jídla', 'Koupit maso a zeleninu', 1, 1, FALSE),
+('Pøíprava ohnì', NULL, 2, 2, TRUE),
+('Úklid chaty', 'Zametání a úklid kuchynì', 3, 3, FALSE);
 
--- 13.
+-- 13) Program
 INSERT INTO Program (idDen, nazev, popis, casZacatku, casKonce) VALUES
-(1, 'Pøíjezd', 'Ubytování a veèeøe', '2025-02-11 16:00', '2025-02-11 20:00'),
-(2, 'Lyování', 'Celodenní program', '2025-02-12 09:00', '2025-02-12 16:00'),
-(5, 'Grilování', 'Veèerní akce', '2025-07-06 18:00', '2025-07-06 22:00');
+(1, 'Pøíjezd', 'Ubytování a volnı program', '2025-07-10 15:00:00', '2025-07-10 20:00:00'),
+(2, 'Vılet', 'Celodenní vılet', '2025-07-11 08:00:00', '2025-07-11 17:00:00'),
+(4, 'Sauna', NULL, '2025-08-01 19:00:00', '2025-08-01 22:00:00');
 
--- 14.
+-- 14) Vlakno
 INSERT INTO Vlakno (nazev, idChaty) VALUES
 ('Obecná diskuze', 1),
-('Jídlo', 1),
-('Doprava', 2),
-('Program', 3);
+('Plánování vıletu', 1),
+('Horská diskuze', 2);
 
--- 15.
+-- 15) Zprava
 INSERT INTO Zprava (idUcastnik, idVlakno, content) VALUES
-(1, 1, 'Ahoj všichni, tìším se!'),
-(2, 1, 'Já taky!'),
-(3, 2, 'Co budeme vaøit?'),
-(4, 3, 'Kdo jede autem?');
+(1, 1, 'Ahoj všichni!'),
+(2, 1, 'Tìším se na chatu!'),
+(3, 2, 'Kdy vyráíme na vılet?'),
+(4, 3, 'Jaké bude poèasí?');
 
--- 16.
+-- 16) PrihlasenyUZ
 INSERT INTO PrihlasenyUZ (dateTimePrihlaseni, token, idUzivatel) VALUES
-(NOW(), 'token123', 1),
-(NOW(), 'token456', 2);
+('2025-06-01 10:00:00', 'token123', 1),
+('2025-06-02 11:30:00', 'token456', 2);
 
--- 17.
+-- 17) Rezim
 INSERT INTO Rezim (idDen, idUcastnik, nazev, popis, cena) VALUES
-(1, 2, 'Pùlden', 'Pøijede a odpoledne', 0),
-(5, 5, 'Vılet', 'Pouze úèast na vıletì', 0),
-(8, 7, 'Bez spaní', 'Pøijede jen na program', 0);
+(1, 2, 'Pùldenní úèast', 'Pøijede a veèer', 0),
+(2, 3, 'Bez pøespání', 'Úèastní se jen programu', 0);
+
+-- 18) ObsazeniMista
+INSERT INTO ObsazeniMista (idMisto, idDen, idUcastnik) VALUES
+(1, 1, 1),
+(2, 1, 2),
+(3, 2, 3),
+(4, 1, 1),
+(5, 4, 4);

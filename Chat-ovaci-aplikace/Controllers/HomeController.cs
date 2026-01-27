@@ -93,7 +93,7 @@ namespace Chat_ovaci_aplikace.Controllers
                 }
                 foreach(Mistnost mi in ch.Mistnosti)
                 {
-                    foreach(Misto mis in mi.Mista)
+                    foreach(ObsazeniMista mis in _databaseContext.Obsazeni.Where(s => s.id mi.)
                     {
                         realnaObsazenost++;
                     }
