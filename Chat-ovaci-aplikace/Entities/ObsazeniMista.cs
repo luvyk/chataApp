@@ -9,7 +9,7 @@ namespace Chat_ovaci_aplikace.Entities
         [Key]
         public int IdObsazeni {  get; set; }
         [ForeignKey(nameof(misto))]
-        public int IdMista { get; set; }
+        public int IdMisto { get; set; }
         [ForeignKey(nameof(den))]
         public int IdDen {  get; set; }
         [ForeignKey(nameof(ucastnik))]
@@ -22,7 +22,7 @@ namespace Chat_ovaci_aplikace.Entities
         public ObsazeniMista(int idObsazeni, int idMista, int idDen, int idUcastnik, Misto misto, Den den, Ucastnik ucastnik)
         {
             IdObsazeni = idObsazeni;
-            IdMista = idMista;
+            IdMisto = idMista;
             IdDen = idDen;
             IdUcastnik = idUcastnik;
             this.misto = misto;
@@ -33,7 +33,7 @@ namespace Chat_ovaci_aplikace.Entities
         public ObsazeniMista()
         {
             IdObsazeni = 0;
-            IdMista = 0;
+            IdMisto = 0;
             IdDen = 0;
             IdUcastnik = 0;
             this.misto = new Misto();

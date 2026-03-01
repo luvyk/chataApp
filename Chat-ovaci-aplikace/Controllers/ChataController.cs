@@ -20,35 +20,42 @@ namespace Chat_ovaci_aplikace.Controllers
         public IActionResult Index([FromRoute] int idChaty)
         {
             Console.WriteLine($"moje ID chaty {idChaty + 1}");
-            /*
-            List<Mistnost> mista = _databaseContext.Mistnosti
-    .Include(r => r.Mista)
-        .ThenInclude(m => m.Typ)
-    .Where(s => s.IdChaty == idChaty + 1)
-    .ToList();
-            */
+
             Console.WriteLine($"hledám detail chaty číslo {idChaty}");
 
+            /*
             Chata detailChaty = _databaseContext.Chaty
                 .Include(m => m.Mistnosti)
                 .ThenInclude(m => m.Mista) 
                 .Include(m => m.Dny)
-                .FirstOrDefault(h => h.IdChaty == idChaty + 1);
-
+                .FirstOrDefault(h => h.IdChaty == idChaty + 1)!;
             var idsDnu = detailChaty.Dny.Select(d => d.IdDen).ToList();
-
-            var obsazeni = _databaseContext.Obsazeni
+            List<ObsazeniMista> obsazeni = _databaseContext.Obsazeni
                 .Include(s => s.ucastnik)
                 .Where(s => idsDnu.Contains(s.IdDen))
                 .ToList();
+            */
+            Chata chataDetail = _databaseContext.Chaty
+        .Where(c => c.IdChaty == idChaty)
 
-            Console.WriteLine(obsazeni.Count);
+    .Include(c => c.Mistnosti)
+        .ThenInclude(m => m.Mista)
 
-            ChataDetailViewModel m = new ChataDetailViewModel();
-            m.obsazeni = obsazeni;
-            m.chata = detailChaty;
+    .Include(c => c.Dny)
 
-            return View(m);
+    .Include(c => c.Ucastnici)
+        .ThenInclude(u => u.ObsazeniMista)
+            .ThenInclude(o => o.misto)
+
+    .Include(c => c.Ucastnici)
+        .ThenInclude(u => u.ObsazeniMista)
+            .ThenInclude(o => o.den)
+
+    .FirstOrDefault();
+
+            
+
+            return View(chataDetail);
         }
     }
 }

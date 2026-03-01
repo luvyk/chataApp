@@ -1,6 +1,6 @@
 ﻿@using Chat_ovaci_aplikace.Models.Chata;
 @using Chat_ovaci_aplikace.Entities;
-@model ChataDetailViewModel
+@model Chat_ovaci_aplikace.Entities.Chata;
 
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -8,7 +8,7 @@
 @{
 }
 
-@foreach(Mistnost mistnost in Model.chata.Mistnosti)
+@foreach(Mistnost mistnost in Model.Mistnosti)
 {
 
     <p>Mistnost @mistnost.NazevMistnosti</p>
@@ -18,10 +18,10 @@
         <div>
                 <table>
                     <tr>
-                @for (int i = 0; i < Model.obsazeni.Where(s => s.IdMista == misto.IdMisto).ToList().Count; i++)
+                @for (int i = 0; i < Model.obsazeni.Where(s => s.IdMisto == misto.IdMisto).ToList().Count; i++)
                 {
                         <th>
-                            @Model.obsazeni.Where(s => s.IdMista == misto.IdMisto).ToList()[i].ucastnik.Uzivatel.Username
+                            @Model.obsazeni.Where(s => s.IdMisto == misto.IdMisto).ToList()[i].ucastnik.Uzivatel.Username
                         </th>
                 }
                     </tr>

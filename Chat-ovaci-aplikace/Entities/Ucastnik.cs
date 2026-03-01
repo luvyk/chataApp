@@ -25,6 +25,7 @@ namespace Chat_ovaci_aplikace.Entities
         public virtual List<RoleUcastnik> RoleUcastnik { get; set; }
         public virtual List<Ukoly> Ukoly { get; set; }
         public virtual List<Zprava> Zpravy { get; set; }
+        public virtual List<ObsazeniMista> ObsazeniMista {  get; set; }
 
         public Ucastnik(int idUcastnik, int idUzivatel, int idChaty, bool zaplatil, Uzivatel uzivatel, Chata chata, List<ObsazeniMista> mista, List<UcastnikAkce> ucastiNaAkcich, List<RoleUcastnik> roleUcastnik, List<Ukoly> ukoly, List<Zprava> zpravy, decimal sumaCeny, bool zucastniSe)
         {
