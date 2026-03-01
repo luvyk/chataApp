@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Chat_ovaci_aplikace.Entities
 {
+    [Table("ObsazeniMista")]
     public class ObsazeniMista
     {
         [Key]

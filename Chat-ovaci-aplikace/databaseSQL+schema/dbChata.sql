@@ -171,10 +171,10 @@ CREATE TABLE Rezim (
 -- 18. 
 CREATE TABLE ObsazeniMista (
   idObsazeni INT PRIMARY KEY AUTO_INCREMENT,
-  idMisto INT,
+  idMista INT,
   idDen INT,
   idUcastnik INT,
-  FOREIGN KEY (idMisto) REFERENCES Misto(idMisto),
+  FOREIGN KEY (idMista) REFERENCES Misto(idMista),
   FOREIGN KEY (idDen) REFERENCES Den(idDen),
   FOREIGN KEY (idUcastnik) REFERENCES Ucastnik(idUcastnik),
   UNIQUE (idMisto, idDen)

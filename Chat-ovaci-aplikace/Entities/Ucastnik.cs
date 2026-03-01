@@ -20,13 +20,13 @@ namespace Chat_ovaci_aplikace.Entities
         public virtual Uzivatel Uzivatel { get; set; }
         public virtual Chata Chata { get; set; }
 
-        public virtual List<Misto> Mista { get; set; }
+        public virtual List<ObsazeniMista> Mista { get; set; }
         public virtual List<UcastnikAkce> UcastiNaAkcich { get; set; }
         public virtual List<RoleUcastnik> RoleUcastnik { get; set; }
         public virtual List<Ukoly> Ukoly { get; set; }
         public virtual List<Zprava> Zpravy { get; set; }
 
-        public Ucastnik(int idUcastnik, int idUzivatel, int idChaty, bool zaplatil, Uzivatel uzivatel, Chata chata, List<Misto> mista, List<UcastnikAkce> ucastiNaAkcich, List<RoleUcastnik> roleUcastnik, List<Ukoly> ukoly, List<Zprava> zpravy, decimal sumaCeny, bool zucastniSe)
+        public Ucastnik(int idUcastnik, int idUzivatel, int idChaty, bool zaplatil, Uzivatel uzivatel, Chata chata, List<ObsazeniMista> mista, List<UcastnikAkce> ucastiNaAkcich, List<RoleUcastnik> roleUcastnik, List<Ukoly> ukoly, List<Zprava> zpravy, decimal sumaCeny, bool zucastniSe)
         {
             IdUcastnik = idUcastnik;
             IdUzivatel = idUzivatel;
@@ -51,7 +51,7 @@ namespace Chat_ovaci_aplikace.Entities
             ZucastniSe = false;
             Uzivatel = new Uzivatel();
             Chata = new Chata();
-            Mista = new List<Misto>();
+            Mista = new List<ObsazeniMista>();
             UcastiNaAkcich = new List<UcastnikAkce>();
             RoleUcastnik = new List<RoleUcastnik>();
             Ukoly = new List<Ukoly>();

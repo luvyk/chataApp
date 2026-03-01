@@ -6,6 +6,7 @@
     ViewData["Title"] = "Home Page";
 }
 
+<!-- <p title="Toto je bublinka s textem.">Najedete na mě myší</p> -->
 <div class="container-fluid h-100">
     <div class="row h-100">
 
@@ -15,7 +16,7 @@
             
                 @foreach(ChataMainViewModel Model in Model.chatas)
                 {
-                    <a asp-controller="" asp-action="">
+                    <a asp-controller="chata" asp-action="index" asp-route-id="@Model.IdChaty">
                 <div class="retro-panel retro-bg">
                     <div class="chata-card" style="border:1px solid #ccc;padding:10px;margin:5px;font-family:sans-serif;font-size:14px;">
                         <h3 style="margin:0 0 5px 0;">@Model.JmenoChaty</h3>

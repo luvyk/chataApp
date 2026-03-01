@@ -4,6 +4,7 @@ namespace Chat_ovaci_aplikace.Models.MainPage
 {
     public class ChataMainViewModel
     {
+        public int IdChaty {  get; set; }
         public string JmenoChaty { get; set; }
         public string Organizator { get; set; }
         public string Zeme { get; set; }
@@ -18,6 +19,7 @@ namespace Chat_ovaci_aplikace.Models.MainPage
 
         public ChataMainViewModel()
         {
+            IdChaty = 0;
             JmenoChaty = "";
             Organizator = "";
             Zeme = "";

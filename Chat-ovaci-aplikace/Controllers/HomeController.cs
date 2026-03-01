@@ -78,6 +78,7 @@ namespace Chat_ovaci_aplikace.Controllers
 
             string organizator = "";
             int realnaObsazenost = 0;
+
             foreach(Chata ch in tempChaty)
             {
                 foreach(Ucastnik uc in ch.Ucastnici)
@@ -93,16 +94,16 @@ namespace Chat_ovaci_aplikace.Controllers
                 }
                 foreach(Mistnost mi in ch.Mistnosti)
                 {
-                    foreach(ObsazeniMista mis in _databaseContext.Obsazeni.Where(s => s.id mi.)
-                    {
-                        realnaObsazenost++;
-                    }
+                    var mista = _databaseContext.Mista.Where(x => x.IdMistnosti == mi.IdMistnosti).ToList();
+                    realnaObsazenost += mista.Count;   
+                    
                 }
             }
-            Console.WriteLine(tempChaty[1].Ucastnici[0].Zaplatil);
+            //Console.WriteLine(tempChaty[0].Ucastnici[0].Zaplatil);
             for(int i = 0; i < tempChaty.Count; i++)
             {
                 model.chatas.Add(new ChataMainViewModel());
+                model.chatas[i].IdChaty = tempChaty[i].IdChaty;
                 model.chatas[i].JmenoChaty = tempChaty[i].Jmeno;
                 model.chatas[i].Organizator = organizator;
                 model.chatas[i].Zeme = tempChaty[i].Zeme;
