@@ -17,6 +17,8 @@ namespace Chat_ovaci_aplikace.Entities
         public virtual Mistnost Mistnost { get; set; }
         public virtual Typ Typ { get; set; }
 
+        public virtual List<ObsazeniMista> ObsazeniMista { get; set; }
+
         public Misto(int idMisto, int idMistnosti, int idTyp, decimal cenaMista, Mistnost mistnost, Typ typ)
         {
             IdMisto = idMisto;
@@ -34,6 +36,25 @@ namespace Chat_ovaci_aplikace.Entities
             CenaMista = 0;
             Mistnost = new Mistnost();
             Typ = new Typ();
+        }
+
+        public bool JeMistoObsazenoVDen(Den d)
+        {
+            foreach(ObsazeniMista obsazeni in ObsazeniMista)
+            {
+                if(obsazeni.IdDen == d.IdDen)
+                { return true; }
+            }
+            return false;
+        }
+        public ObsazeniMista? VTenDenMaMisto(Den d)
+        {
+            foreach (ObsazeniMista obsazeni in ObsazeniMista)
+            {
+                if (obsazeni.IdDen == d.IdDen)
+                { return obsazeni; }
+            }
+            return null;
         }
     }
 }

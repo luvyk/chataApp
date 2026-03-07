@@ -18,12 +18,38 @@
         <div>
                 <table>
                     <tr>
-                @for (int i = 0; i < Model.obsazeni.Where(s => s.IdMisto == misto.IdMisto).ToList().Count; i++)
-                {
-                        <th>
-                            @Model.obsazeni.Where(s => s.IdMisto == misto.IdMisto).ToList()[i].ucastnik.Uzivatel.Username
-                        </th>
-                }
+
+                        @foreach(Den den in Model.Dny)
+                        {
+
+                                @if(misto.JeMistoObsazenoVDen(den))
+                                {
+                                    @if (@misto.VTenDenMaMisto(den).ucastnik.Uzivatel.Username == ViewBag.username)
+                                    {
+                                            <th>
+                                                <a asp-controller="chata" asp-action="odstranZMista" asp-route-den="@den.IdDen" asp-route-misto="@misto.IdMisto" >
+                                                    @misto.VTenDenMaMisto(den).ucastnik.Uzivatel.Username
+                                                </a>
+                                            </th>
+                                        
+                                    }
+                                    else
+                                    {
+                                        <th>
+                                            @misto.VTenDenMaMisto(den).ucastnik.Uzivatel.Username
+                                        </th>
+                                    }
+                                }
+                                else
+                                {
+                                    <th>
+                                        <a asp-controller="chata" asp-action="zapisNaMisto" asp-route-den="@den.IdDen" asp-route-misto="@misto.IdMisto">
+                                            volno
+                                        </a>
+                                    </th>
+                                }
+
+                        }
                     </tr>
                 </table>
         </div>

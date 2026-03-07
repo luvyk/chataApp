@@ -19,24 +19,10 @@ namespace Chat_ovaci_aplikace.Controllers
 
         public IActionResult Index([FromRoute] int idChaty)
         {
-            Console.WriteLine($"moje ID chaty {idChaty + 1}");
+            ViewBag.username = HttpContext.Session.GetString("User");
 
-            Console.WriteLine($"hledám detail chaty číslo {idChaty}");
-
-            /*
-            Chata detailChaty = _databaseContext.Chaty
-                .Include(m => m.Mistnosti)
-                .ThenInclude(m => m.Mista) 
-                .Include(m => m.Dny)
-                .FirstOrDefault(h => h.IdChaty == idChaty + 1)!;
-            var idsDnu = detailChaty.Dny.Select(d => d.IdDen).ToList();
-            List<ObsazeniMista> obsazeni = _databaseContext.Obsazeni
-                .Include(s => s.ucastnik)
-                .Where(s => idsDnu.Contains(s.IdDen))
-                .ToList();
-            */
             Chata chataDetail = _databaseContext.Chaty
-        .Where(c => c.IdChaty == idChaty)
+        .Where(c => c.IdChaty == idChaty + 1)
 
     .Include(c => c.Mistnosti)
         .ThenInclude(m => m.Mista)
@@ -44,11 +30,11 @@ namespace Chat_ovaci_aplikace.Controllers
     .Include(c => c.Dny)
 
     .Include(c => c.Ucastnici)
-        .ThenInclude(u => u.ObsazeniMista)
+        .ThenInclude(u => u.Mista)
             .ThenInclude(o => o.misto)
 
     .Include(c => c.Ucastnici)
-        .ThenInclude(u => u.ObsazeniMista)
+        .ThenInclude(u => u.Mista)
             .ThenInclude(o => o.den)
 
     .FirstOrDefault();
@@ -56,6 +42,37 @@ namespace Chat_ovaci_aplikace.Controllers
             
 
             return View(chataDetail);
+        }
+
+        public IActionResult zapisNaMisto([FromQuery] int den,[FromQuery] int misto)
+        {
+            ObsazeniMista obsazeni = new ObsazeniMista();
+            obsazeni.IdDen = den;
+            Uzivatel? uzivatel = _databaseContext.Uzivatele.SingleOrDefault(s => s.Username == HttpContext.Session.GetString("User"));
+            obsazeni.IdUcastnik = uzivatel.IdUzivatel;
+            obsazeni.IdMisto = misto;
+            obsazeni.den = null;
+            obsazeni.ucastnik = null;
+            obsazeni.misto = null;
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine($"zapisuji {obsazeni.IdDen} {obsazeni.IdUcastnik} {obsazeni.IdMisto}");
+
+            _databaseContext.Obsazeni.Add(obsazeni);
+            _databaseContext.SaveChanges();
+
+            return RedirectToAction("index");
+        }
+
+        public IActionResult odstranZMista([FromQuery] int den, [FromQuery] int misto)
+        {
+            ObsazeniMista obsazeni = _databaseContext.Obsazeni.FirstOrDefault(s => s.IdDen == den && s.IdMisto == misto) ?? new ObsazeniMista();
+            _databaseContext.Obsazeni.Remove(obsazeni);
+            _databaseContext.SaveChanges();
+
+            return RedirectToAction("index");
         }
     }
 }
