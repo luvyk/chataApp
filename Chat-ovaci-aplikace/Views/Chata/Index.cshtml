@@ -8,18 +8,18 @@
 @{
 }
 
-@foreach(Mistnost mistnost in Model.Mistnosti)
+@foreach(Mistnost mistnost in Model.Mistnosti.OrderBy(s => s.IdMistnosti))
 {
 
     <p>Mistnost @mistnost.NazevMistnosti</p>
     <div>
-    @foreach(Misto misto in mistnost.Mista)
-    {            
+        @foreach (Misto misto in mistnost.Mista.OrderBy(s => s.IdMisto))
+        {            
         <div>
                 <table>
                     <tr>
 
-                        @foreach(Den den in Model.Dny)
+                        @foreach(Den den in Model.Dny.OrderBy(s => s.Datum))
                         {
 
                                 @if(misto.JeMistoObsazenoVDen(den))

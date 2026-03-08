@@ -74,5 +74,9 @@ namespace Chat_ovaci_aplikace.Controllers
 
             return RedirectToAction("index");
         }
+        public IActionResult chataMainPage(int id)
+        { 
+            return View(id);
+        }
     }
 }
