@@ -8,30 +8,30 @@
 @{
 }
 
-@foreach(Mistnost mistnost in Model.Mistnosti.OrderBy(s => s.IdMistnosti))
-{
+<div class="retro-box">
 
-    <p>Mistnost @mistnost.NazevMistnosti</p>
-    <div>
-        @foreach (Misto misto in mistnost.Mista.OrderBy(s => s.IdMisto))
-        {            
+    @foreach (Mistnost mistnost in Model.Mistnosti.OrderBy(s => s.IdMistnosti))
+    {
+        <p class="retro-room-title">Mistnost @mistnost.NazevMistnosti</p>
+
         <div>
-                <table>
-                    <tr>
+            @foreach (Misto misto in mistnost.Mista.OrderBy(s => s.IdMisto))
+            {
+                <div class="retro-seat">
+                    <table>
+                        <tr>
 
-                        @foreach(Den den in Model.Dny.OrderBy(s => s.Datum))
-                        {
-
-                                @if(misto.JeMistoObsazenoVDen(den))
+                            @foreach (Den den in Model.Dny.OrderBy(s => s.Datum))
+                            {
+                                if (misto.JeMistoObsazenoVDen(den))
                                 {
-                                    @if (@misto.VTenDenMaMisto(den).ucastnik.Uzivatel.Username == ViewBag.username)
+                                    if (misto.VTenDenMaMisto(den).ucastnik.Uzivatel.Username == ViewBag.username)
                                     {
-                                            <th>
-                                                <a asp-controller="chata" asp-action="odstranZMista" asp-route-den="@den.IdDen" asp-route-misto="@misto.IdMisto" >
-                                                    @misto.VTenDenMaMisto(den).ucastnik.Uzivatel.Username
-                                                </a>
-                                            </th>
-                                        
+                                        <th>
+                                            <a asp-controller="chata" asp-action="odstranZMista" asp-route-den="@den.IdDen" asp-route-misto="@misto.IdMisto">
+                                                @misto.VTenDenMaMisto(den).ucastnik.Uzivatel.Username
+                                            </a>
+                                        </th>
                                     }
                                     else
                                     {
@@ -43,16 +43,18 @@
                                 else
                                 {
                                     <th>
-                                        <a asp-controller="chata" asp-action="zapisNaMisto" asp-route-den="@den.IdDen" asp-route-misto="@misto.IdMisto">
+                                        <a class="retro-free" asp-controller="chata" asp-action="zapisNaMisto" asp-route-den="@den.IdDen" asp-route-misto="@misto.IdMisto">
                                             volno
                                         </a>
                                     </th>
                                 }
+                            }
 
-                        }
-                    </tr>
-                </table>
+                        </tr>
+                    </table>
+                </div>
+            }
         </div>
     }
-    </div>
-}
+
+</div>
