@@ -13,9 +13,13 @@ namespace Chat_ovaci_aplikace.Entities
         [ForeignKey(nameof(Typ))]
         public int IdTyp { get; set; }
         public decimal CenaMista { get; set; }
+        [ForeignKey(nameof(JeManzelskeS))]
+        [Column("IdJeManzelskeS")]
+        public int? IdJeManzelskeS { get; set; }
 
         public virtual Mistnost Mistnost { get; set; }
         public virtual Typ Typ { get; set; }
+        public virtual Misto? JeManzelskeS { get; set; }
 
         public virtual List<ObsazeniMista> ObsazeniMista { get; set; }
 
@@ -34,8 +38,10 @@ namespace Chat_ovaci_aplikace.Entities
             IdMistnosti = 0;
             IdTyp = 0;
             CenaMista = 0;
+            IdJeManzelskeS = null;
             Mistnost = new Mistnost();
             Typ = new Typ();
+            JeManzelskeS = null;
         }
 
         public bool JeMistoObsazenoVDen(Den d)

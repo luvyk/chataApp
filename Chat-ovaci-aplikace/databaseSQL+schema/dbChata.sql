@@ -67,8 +67,10 @@ CREATE TABLE Misto (
   idMistnosti INT,
   idTyp INT,
   cenaMista DECIMAL(10,2),
+  IdJeManzelskeS INT null,
   FOREIGN KEY (idMistnosti) REFERENCES Mistnost(idMistnosti),
-  FOREIGN KEY (idTyp) REFERENCES Typ(idTyp)
+  FOREIGN KEY (idTyp) REFERENCES Typ(idTyp),
+  FOREIGN KEY (IdJeManzelskeS) REFERENCES Misto(idMisto)
 );
 
 -- 8. Akce
@@ -171,10 +173,10 @@ CREATE TABLE Rezim (
 -- 18. 
 CREATE TABLE ObsazeniMista (
   idObsazeni INT PRIMARY KEY AUTO_INCREMENT,
-  idMista INT,
+  idMisto INT,
   idDen INT,
   idUcastnik INT,
-  FOREIGN KEY (idMista) REFERENCES Misto(idMisto),
+  FOREIGN KEY (idMisto) REFERENCES Misto(idMisto),
   FOREIGN KEY (idDen) REFERENCES Den(idDen),
   FOREIGN KEY (idUcastnik) REFERENCES Ucastnik(idUcastnik),
   UNIQUE (idMisto, idDen)

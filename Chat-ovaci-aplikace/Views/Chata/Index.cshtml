@@ -15,7 +15,7 @@
         <p class="retro-room-title">Mistnost @mistnost.NazevMistnosti</p>
 
         <div>
-            @foreach (Misto misto in mistnost.Mista.OrderBy(s => s.IdMisto))
+            @foreach (Misto misto in mistnost.Mista.OrderBy(s => s.IdJeManzelskeS).ThenBy(s => s.IdMisto))
             {
                 <div class="retro-seat">
                     <table>

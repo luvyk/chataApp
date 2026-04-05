@@ -38,12 +38,20 @@ INSERT INTO Typ (jmeno) VALUES
 ('HoupacÌ sÌù');
 
 -- 7) Misto
-INSERT INTO Misto (idMistnosti, idTyp, cenaMista) VALUES
-(1, 1, 200.00),
-(1, 1, 200.00),
-(1, 2, 100.00),
-(2, 1, 150.00),
-(3, 3, 50.00);
+INSERT INTO Misto (idMistnosti, idTyp, cenaMista, IdJeManzelskeS) VALUES
+(1, 1, 200.00, 2),
+(1, 1, 200.00, 1),
+(1, 2, 100.00, null),
+(2, 1, 150.00, null),
+(3, 3, 50.00, null);
+
+UPDATE Misto
+SET IdJeManzelskeS = 2
+WHERE idMistnosti = 1;
+
+UPDATE Misto
+SET IdJeManzelskeS = 1
+WHERE idMistnosti = 2;
 
 -- 8) Akce
 INSERT INTO Akce (nazev, popis, casOD, casDO, cenaNavic) VALUES

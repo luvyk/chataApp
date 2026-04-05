@@ -39,6 +39,7 @@ namespace Eshop.Controllers
 
             HttpContext.Session.SetString("User", account.Username);
             //HttpContext.Session.SetString("Role", account.Role);
+            HttpContext.Session.SetInt32("Id", account.IdUzivatel);
 
             /*
             Uzivatel u = _context.Uzivatele.FirstOrDefault(x => x.Username == account.Username);

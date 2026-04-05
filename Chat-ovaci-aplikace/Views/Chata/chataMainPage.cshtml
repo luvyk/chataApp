@@ -4,12 +4,25 @@
 @{
 }
 @model int
-<div>
-    <a asp-controller="chata" asp-action="Index" asp-route-idChaty="@Model">Rozložení postelí</a> @*Zasedací pořádek*@
+
+<div class="container my-4 p-4 bg-light border rounded">
+    <div>
+        <a asp-controller="chata" asp-action="Index" asp-route-idChaty="@Model">Rozložení postelí</a> @*Zasedací pořádek*@
+    </div>
+    <div>
+        <a asp-controller="chata" asp-action="Akce" asp-route-idChaty="@Model">Akce</a> @*akce*@
+    </div>
+    <div>
+        <a asp-controller="chata" asp-action="Chat" asp-route-idChaty="@Model">Chat</a> @*chat*@
+    </div>
 </div>
-<div>
-    <a asp-controller="chata" asp-action="Akce" asp-route-idChaty="@Model">Akce</a> @*akce*@
+
+<div class="container my-4 p-4 bg-white border rounded shadow-sm">
+    <h2>úkoly</h2>
+    <p>Tento má lehký stín, aby vizuálně vystoupil.</p>
 </div>
-<div>
-    <a asp-controller="chata" asp-action="Chat" asp-route-idChaty="@Model">Chat</a> @*chat*@
+
+<div class="container my-4 p-4 bg-light border rounded">
+    <h2>akce</h2>
+    <p>Ideální třeba pro závěrečné informace nebo tlačítka.</p>
 </div>

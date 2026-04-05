@@ -22,4 +22,8 @@
     <None Include="wwwroot\obrazek\přidatSeNaChatu.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\Auth\MainPage\" />
+  </ItemGroup>
+
 </Project>

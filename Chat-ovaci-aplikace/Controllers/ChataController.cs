@@ -6,6 +6,7 @@ using Eshop.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Principal;
 
 namespace Chat_ovaci_aplikace.Controllers
 {
@@ -74,9 +75,13 @@ namespace Chat_ovaci_aplikace.Controllers
 
             return RedirectToAction("index");
         }
-        public IActionResult chataMainPage(int id)
-        { 
-            return View(id);
+        public IActionResult chataMainPage(int idchata)
+        {
+            int idUcastnik = HttpContext.Session.GetInt32("Id") ?? 0;
+            List<Ukoly> ukoly = _databaseContext.Ukoly.Where(s => s.Den.IdChaty == idchata && s.IdUcastnik == idUcastnik).ToList();
+
+            List<Program> programy = _databaseContext.Programy.Where(s => _databaseContext.)
+            return View(idchata);
         }
     }
 }
