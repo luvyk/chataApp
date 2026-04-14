@@ -75,13 +75,29 @@ namespace Chat_ovaci_aplikace.Controllers
 
             return RedirectToAction("index");
         }
+        [Route("chata/chataMainPage/{idChata}")]
         public IActionResult chataMainPage(int idchata)
         {
+            Console.WriteLine($"idChaty je {idchata}");
             int idUcastnik = HttpContext.Session.GetInt32("Id") ?? 0;
             List<Ukoly> ukoly = _databaseContext.Ukoly.Where(s => s.Den.IdChaty == idchata && s.IdUcastnik == idUcastnik).ToList();
 
-            List<Program> programy = _databaseContext.Programy.Where(s => _databaseContext.)
+            List<ProgramChaty> programy = _databaseContext.Programy.Where(s => _databaseContext.Dny
+                                        .Where(s => s.IdChaty == idchata)
+                                        .Select(s => s.IdDen).Contains(s.IdDen)).ToList();
             return View(idchata);
+        }
+        [Route("chata/AkceAUkoly/{idChata}")]
+        public IActionResult AkceAUkoly(int idChata)
+        {
+            int idUcastnik = HttpContext.Session.GetInt32("Id") ?? 0;
+
+            List<Akce> akce = _databaseContext.Akces.Where(s => s.Den.IdChaty == idChata).ToList();
+            List<Ukoly> ukoly = _databaseContext.Ukoly
+                            .Where(s => s.IdUcastnik == idUcastnik).ToList();
+
+            AkceAUkolyViewModel model = new AkceAUkolyViewModel(akce, ukoly);
+            return View(model);
         }
     }
 }

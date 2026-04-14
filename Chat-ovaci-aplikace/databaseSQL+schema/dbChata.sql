@@ -76,11 +76,13 @@ CREATE TABLE Misto (
 -- 8. Akce
 CREATE TABLE Akce (
   idAkce INT PRIMARY KEY AUTO_INCREMENT,
+  idDen INT,
   nazev VARCHAR(100),
   popis VARCHAR(255) null,
   casOD DATETIME,
   casDO DATETIME null,
-  cenaNavic DECIMAL(10,2) null
+  cenaNavic DECIMAL(10,2) null,
+  foreign key (idDen) references Den(idDen)
 );
 
 -- 9. UcastnikAkce

@@ -1,0 +1,51 @@
+﻿@using Chat_ovaci_aplikace.Entities;
+@using Chat_ovaci_aplikace.Models.Chata;
+
+<div style="display: flex; flex-direction: row; width: 100%;">
+    <div style="flex: 1">
+        
+            @foreach(Akce akce in Model.Akce)
+            {
+                <div>
+                    <h3>@akce.Nazev</h3>
+                    <p>@akce.Popis</p>
+                    <p>
+                        <div>Datum - @akce.Den.Datum</div>
+                        <div>Začátesk - @akce.CasOd</div>
+                        <div>Konec - @akce.CasDo</div>
+                    </p>
+                    <p>
+                        @if()
+                    </p>
+                </div>
+            }
+        
+    </div>
+    <div style="flex: 1">
+        
+            @foreach (Ukoly ukol in Model.Ukoly)
+            {
+                <div>
+                    <h3>@ukol.Nazev</h3>
+                    <p>@ukol.Popis</p>
+                    <p>
+                        <div>Datum @ukol.Den.Datum</div>
+                        <div>Ukol pro @ukol.Ucastnik.Uzivatel.Username (tebe)</div>
+                        @if(ukol.Splneno)
+                        {
+                            <div style="background-color:lawngreen">
+                                Splněno✨
+                            </div>
+                        }
+                        else
+                        {
+                            <div style="background-color:red">
+                                Je třeba udělat.
+                            </div>
+                        }
+                    </p>
+                </div>   
+            }
+        
+    </div>
+</div>

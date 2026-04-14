@@ -1,0 +1,118 @@
+@startuml
+' Entities class diagram for Chat-ovaci-aplikace
+' Generated from files in Entities/ folder
+
+skinparam classAttributeIconSize 0
+
+class Chata {
+  +int IdChaty
+  +string Jmeno
+}
+class Ucastnik {
+  +int IdUcastnik
+  +bool Zaplatil
+}
+class Uzivatel {
+  +int IdUzivatel
+  +string Username
+}
+class Den {
+  +int IdDen
+  +DateTime Datum
+}
+class Mistnost {
+  +int IdMistnosti
+  +string NazevMistnosti
+}
+class Misto {
+  +int IdMisto
+  +decimal CenaMista
+}
+class Typ {
+  +int IdTyp
+  +string Jmeno
+}
+class ObsazeniMista {
+  +int IdObsazeni
+}
+class UcastnikAkce {
+  +int IdUcastnik
+}
+class Akce {
+  +int IdAkce
+  +string Nazev
+}
+class ProgramChaty {
+  +int IdProgramu
+}
+class Rezim {
+  +int IdRezim
+}
+class Role {
+  +int IdRole
+}
+class RoleUcastnik {
+}
+class Ukoly {
+  +int IdUkolu
+}
+class PrihlasenyUZ {
+  +int IdPrihlaseni
+}
+class Vlakno {
+  +int IdVlakno
+}
+class Zprava {
+  +int IdZpravy
+  +string Content
+}
+
+' Associations (cardinalities approximated from navigation properties)
+Chata "1" o-- "0..*" Ucastnik : has
+Chata "1" o-- "0..*" Den : contains
+Chata "1" o-- "0..*" Mistnost : contains
+Chata "1" o-- "0..*" Vlakno : contains
+
+Den "1" o-- "0..*" Ukoly : has
+Den "1" o-- "0..*" ProgramChaty : has
+Den "1" -- "0..*" ObsazeniMista : referencedBy
+
+Mistnost "1" o-- "0..*" Misto : contains
+Misto "1" o-- "0..*" ObsazeniMista : has
+Misto "*" -- "1" Typ : typed
+Misto "0..1" -- "0..1" Misto : "JeManzelskeS (pair)"
+
+Ucastnik "*" -- "1" Uzivatel : account
+Ucastnik "*" -- "1" Chata : attends
+Ucastnik "1" o-- "0..*" ObsazeniMista : reserves
+Ucastnik "1" o-- "0..*" UcastnikAkce : attends
+Ucastnik "1" o-- "0..*" RoleUcastnik : roles
+Ucastnik "1" o-- "0..*" Ukoly : tasks
+Ucastnik "1" o-- "0..*" Zprava : posts
+
+ObsazeniMista "*" -- "1" Misto : for
+ObsazeniMista "*" -- "1" Den : at
+ObsazeniMista "*" -- "1" Ucastnik : by
+
+UcastnikAkce "*" -- "1" Ucastnik : participant
+UcastnikAkce "*" -- "1" Akce : event
+Akce "*" -- "1" Den : scheduledOn
+Akce "1" o-- "0..*" UcastnikAkce : participants
+
+ProgramChaty "*" -- "1" Den : belongsTo
+Rezim "*" -- "1" Den : forDay
+Rezim "*" -- "1" Ucastnik : forParticipant
+
+Role "1" o-- "0..*" RoleUcastnik : mapping
+RoleUcastnik "*" -- "1" Ucastnik : for
+RoleUcastnik "*" -- "1" Role : role
+
+Uzivatel "1" o-- "0..*" Ucastnik : associations
+Uzivatel "1" o-- "0..*" PrihlasenyUZ : sessions
+PrihlasenyUZ "*" -- "1" Uzivatel : of
+
+Vlakno "1" o-- "0..*" Zprava : contains
+Zprava "*" -- "1" Ucastnik : author
+Zprava "*" -- "1" Vlakno : inThread
+
+@enduml

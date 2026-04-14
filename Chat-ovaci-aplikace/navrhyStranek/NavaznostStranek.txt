@@ -1,0 +1,8 @@
+﻿mainPage (prihlaseni, global chat, atd...)
+	->prihlaseni
+	->chataMainPage
+
+chataMainPage (Chat)
+	->spaciPoradek
+	->AkceAUkoly
+	->(budoucí) Objednání jída

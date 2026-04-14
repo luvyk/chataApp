@@ -9,7 +9,7 @@ namespace Chat_ovaci_aplikace.Entities
         [Key]
         public int IdUkolu { get; set; }
         public string Nazev { get; set; }
-        public string Popis { get; set; }
+        public string? Popis { get; set; }
         [ForeignKey(nameof(Ucastnik))]
         public int IdUcastnik { get; set; }
         [ForeignKey(nameof(Den))]

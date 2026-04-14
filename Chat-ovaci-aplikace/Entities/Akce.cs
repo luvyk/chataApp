@@ -8,6 +8,7 @@ namespace Chat_ovaci_aplikace.Entities
     {
         [Key]
         public int IdAkce { get; set; }
+        [ForeignKey(nameof(Den))]
         public int IdDen { get; set; }
         public string Nazev { get; set; }
         public string? Popis { get; set; }
@@ -42,6 +43,11 @@ namespace Chat_ovaci_aplikace.Entities
             CenaNavic = 0;
             Ucastnici = new List<UcastnikAkce>();
             Den = new Den();
+        }
+
+        public bool UcastnimSe(int idUcastnik)
+        {
+            return Ucastnici.Any(s => s.IdUcastnik == idUcastnik);
         }
     }
 }

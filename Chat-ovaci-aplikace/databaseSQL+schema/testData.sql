@@ -54,10 +54,10 @@ SET IdJeManzelskeS = 1
 WHERE idMistnosti = 2;
 
 -- 8) Akce
-INSERT INTO Akce (nazev, popis, casOD, casDO, cenaNavic) VALUES
-('Výlet na rozhlednu', 'Pìší túra', '2025-07-11 09:00:00', '2025-07-11 14:00:00', 0),
-('Grilování', 'Veèerní grilovaèka', '2025-07-11 18:00:00', NULL, 150.00),
-('Sauna', NULL, '2025-08-02 20:00:00', NULL, 200.00);
+INSERT INTO Akce (nazev, popis, casOD, casDO, cenaNavic, idDen) VALUES
+('Výlet na rozhlednu', 'Pìší túra', '2025-07-11 09:00:00', '2025-07-11 14:00:00', 0, 1),
+('Grilování', 'Veèerní grilovaèka', '2025-07-11 18:00:00', NULL, 150.00, 2),
+('Sauna', NULL, '2025-08-02 20:00:00', NULL, 200.00, 3);
 
 -- 9) UcastnikAkce
 INSERT INTO UcastnikAkce (idUcastnik, idAkce) VALUES
