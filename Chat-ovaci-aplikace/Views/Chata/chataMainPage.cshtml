@@ -10,7 +10,7 @@
         <a asp-controller="chata" asp-action="Index" asp-route-id="@Model">Rozložení postelí</a> @*Zasedací pořádek*@
     </div>
     <div>
-        <a asp-controller="chata" asp-action="AkceAUkoly" asp-route-id="@Model">Akce a Úkoly</a> @*akce*@
+        <a asp-controller="chata" asp-action="AkceAUkoly" asp-route-id="@Model" asp-route-idUcastnik="@ViewBag.idUcastnik">Akce a Úkoly</a> @*akce*@
     </div>
 </div>
 

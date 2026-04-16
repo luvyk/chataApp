@@ -13,10 +13,18 @@
                         <div>Datum - @akce.Den.Datum</div>
                         <div>Začátesk - @akce.CasOd</div>
                         <div>Konec - @akce.CasDo</div>
+                        <div>Cena - @akce.CenaNavic Kč</div>
                     </p>
                     <p>
-                        @if()
-                    </p>
+                        @if(true) //(akce.UcastnimSe(ViewBag.Id))
+                        {
+                            <div>ucastnim se</div>
+                        }
+                        else
+                        {
+                            <div>neucastnim se</div>
+                        }
+                </p>
                 </div>
             }
         
