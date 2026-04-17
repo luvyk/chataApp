@@ -16,7 +16,8 @@
                         <div>Cena - @akce.CenaNavic Kč</div>
                     </p>
                     <p>
-                        @if(true) //(akce.UcastnimSe(ViewBag.Id))
+                    <a asp-controller="Chata" asp-action="PrihlasitSeNaAkci" asp-route-idUcastnik="@ViewBag.idUcastnik" asp-route-idAkce="@akce.IdAkce" asp-route-chata="@akce.Den.Chata.IdChaty">
+                        @if (akce.UcastnimSe(ViewBag.IdUcastnik))
                         {
                             <div>ucastnim se</div>
                         }
@@ -24,7 +25,8 @@
                         {
                             <div>neucastnim se</div>
                         }
-                </p>
+                    </a>
+                    </p>
                 </div>
             }
         

@@ -18,15 +18,16 @@ namespace Chat_ovaci_aplikace.Controllers
             _databaseContext = context;
         }
 
-        [Route("chata/index/{idChata}")]
-        public IActionResult Index([FromRoute] int idChaty)
+        [Route("chata/index/{id}")]
+        public IActionResult Index([FromRoute] int id)
         {
             int idUzivatele = HttpContext.Session.GetInt32("Id") ?? 0;
 
             ViewBag.username = HttpContext.Session.GetString("User");
+            ViewBag.idChaty = id;
 
 
-            List<Mistnost> mistnosti = _databaseContext.Mistnosti.Where(s => s.IdChaty == idChaty)
+            List<Mistnost> mistnosti = _databaseContext.Mistnosti.Where(s => s.IdChaty == id)
                     .Include(s => s.Mista)
                     .Include(s => s.Chata)
                         .ThenInclude(s => s.Dny)
@@ -42,7 +43,7 @@ namespace Chat_ovaci_aplikace.Controllers
             return View(mistnosti);
         }
 
-        public IActionResult zapisNaMisto([FromQuery] int den,[FromQuery] int misto)
+        public IActionResult zapisNaMisto([FromQuery] int den,[FromQuery] int misto, [FromQuery] int idChaty)
         {
             ObsazeniMista obsazeni = new ObsazeniMista();
             obsazeni.IdDen = den;
@@ -61,24 +62,31 @@ namespace Chat_ovaci_aplikace.Controllers
             _databaseContext.Obsazeni.Add(obsazeni);
             _databaseContext.SaveChanges();
 
-            return RedirectToAction("index");
+            ViewBag.idChaty = idChaty;
+
+            return RedirectToAction("index", new {id = idChaty});
         }
 
-        public IActionResult odstranZMista([FromQuery] int den, [FromQuery] int misto)
+        public IActionResult odstranZMista([FromQuery] int den, [FromQuery] int misto, [FromQuery] int idChaty)
         {
             ObsazeniMista obsazeni = _databaseContext.Obsazeni.FirstOrDefault(s => s.IdDen == den && s.IdMisto == misto) ?? new ObsazeniMista();
             _databaseContext.Obsazeni.Remove(obsazeni);
             _databaseContext.SaveChanges();
 
-            return RedirectToAction("index");
+            ViewBag.idChaty = idChaty;
+
+            return RedirectToAction("index", new {id = idChaty});
         }
-        [Route("chata/chataMainPage/{idChata}")]
+
+        [Route("chata/chataMainPage/{idChaty}")]
         public IActionResult chataMainPage(int idChaty)
         {
+            Console.WriteLine(idChaty);
+
             int idUzivatele = HttpContext.Session.GetInt32("Id") ?? 0;
             Ucastnik? ucastnik = _databaseContext.Ucastnici.FirstOrDefault(s => s.IdUzivatel == idUzivatele && s.IdChaty == idChaty);
             ViewBag.idUcastnik = ucastnik.IdUcastnik;
-
+            //ViewBag.idChaty = idChaty;
 
             int idUcastnik = HttpContext.Session.GetInt32("Id") ?? 0;
             List<Ukoly> ukoly = _databaseContext.Ukoly.Where(s => s.Den.IdChaty == idChaty && s.IdUcastnik == idUcastnik).ToList();
@@ -92,7 +100,7 @@ namespace Chat_ovaci_aplikace.Controllers
         public IActionResult AkceAUkoly(int idChata, [FromQuery] int idUcastnik)
         {
             //int idUzivatel = HttpContext.Session.GetInt32("Id") ?? 0;
-            ViewBag.Id = idUcastnik;
+            ViewBag.idUcastnik = idUcastnik;
 
             List<Akce> akce = _databaseContext.Akces.Where(s => s.Den.IdChaty == idChata).ToList();
             List<Ukoly> ukoly = _databaseContext.Ukoly
@@ -102,12 +110,28 @@ namespace Chat_ovaci_aplikace.Controllers
             return View(model);
         }
 
-        [Route("chata/PrihlasitSeNaAkci/{idChata}")]
-        public IActionResult PrihlasitSeNaAkci([FromQuery] int idAkce, [FromRoute]int idChata)
+        [Route("chata/PrihlasitSeNaAkci/{idUcastnik}/{idAkce}")]
+        public IActionResult PrihlasitSeNaAkci(int idUcastnik, int idAkce)
         {
+            UcastnikAkce? ucastAkc = _databaseContext.UcastnikAkces.FirstOrDefault(s => s.IdUcastnik == idUcastnik && s.IdAkce == idAkce) ?? null;
+            if(ucastAkc == null)
+            {
+                UcastnikAkce newUcastni = new UcastnikAkce();
+                newUcastni.IdUcastnik = idUcastnik;
+                newUcastni.IdAkce = idAkce;
+                newUcastni.Akce = null;
+                newUcastni.Ucastnik = null;
 
+                _databaseContext.Add(newUcastni);
+                _databaseContext.SaveChanges();
 
-            return RedirectToAction("chataMainPage", new { idChata = idChata});
+                return RedirectToAction("AkceAUkoly", new { idChata = ucastAkc.Akce.Den.Chata.IdChaty, idUcastnik });
+            }
+
+            _databaseContext.Remove(ucastAkc);
+            _databaseContext.SaveChanges();
+
+            return RedirectToAction("AkceAUkoly", new {idChata = ucastAkc.Akce.Den.Chata.IdChaty, idUcastnik });
         }
     }
 }

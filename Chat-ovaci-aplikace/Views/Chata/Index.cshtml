@@ -28,7 +28,7 @@
                                     if (misto.VTenDenMaMisto(den).ucastnik.Uzivatel.Username == ViewBag.username)
                                     {
                                         <th>
-                                            <a asp-controller="chata" asp-action="odstranZMista" asp-route-den="@den.IdDen" asp-route-misto="@misto.IdMisto">
+                                            <a asp-controller="chata" asp-action="odstranZMista" asp-route-den="@den.IdDen" asp-route-misto="@misto.IdMisto" asp-route-idChaty="@ViewBag.idChaty">
                                                 @misto.VTenDenMaMisto(den).ucastnik.Uzivatel.Username
                                             </a>
                                         </th>
@@ -43,7 +43,7 @@
                                 else
                                 {
                                     <th>
-                                        <a class="retro-free" asp-controller="chata" asp-action="zapisNaMisto" asp-route-den="@den.IdDen" asp-route-misto="@misto.IdMisto">
+                                        <a class="retro-free" asp-controller="chata" asp-action="zapisNaMisto" asp-route-den="@den.IdDen" asp-route-misto="@misto.IdMisto" asp-route-idChaty="@ViewBag.idChaty">
                                             volno
                                         </a>
                                     </th>

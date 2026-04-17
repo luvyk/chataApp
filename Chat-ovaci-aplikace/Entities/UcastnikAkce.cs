@@ -1,13 +1,17 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Chat_ovaci_aplikace.Entities
 {
     [Table("UcastnikAkce")]
+    [PrimaryKey(nameof(IdUcastnik), nameof(IdAkce))]
     public class UcastnikAkce
     {
         [Key]
+        [ForeignKey(nameof(Ucastnik))]
         public int IdUcastnik { get; set; }
+        [Key]
         [ForeignKey(nameof(Akce))]
         public int IdAkce { get; set; }
 

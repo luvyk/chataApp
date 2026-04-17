@@ -125,8 +125,6 @@ namespace Chat_ovaci_aplikace.Controllers
                 
             }
 
-
-            Console.WriteLine($"Našel jsem {model.chatas.Count} chat");
             return model;
         }
     }
